@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>447165416</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\Debug\Obj\ff.o</file>
+      <file>$PROJ_DIR$\Inc\flash_if.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\fattime.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+      <file>$PROJ_DIR$\..\Sample\Src\sd_spi.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rcc.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_ll_rcc.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\ccsbcs.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_it.o</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\fattime.pbi</file>
+      <file>$PROJ_DIR$\Src\memory_card.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\diskio.o</file>
+      <file>$PROJ_DIR$\Inc\command.h</file>
+      <file>$PROJ_DIR$\Debug\List\Test.map</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_gpio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_cortex.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_stm32f1xx.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal.o</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\CMSIS\Include\core_cmFunc.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_msp.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\memory_card.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\CMSIS\Include\core_cm3.h</file>
+      <file>$PROJ_DIR$\FATFS\ffconf.h</file>
+      <file>$PROJ_DIR$\Inc\init.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\Test.out</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103x6.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_stm32f1xx.__cstat.et</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_spi.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_gpio.__cstat.et</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_cortex.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_spi.o</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h</file>
+      <file>$PROJ_DIR$\FATFS\fattime.h</file>
+      <file>$PROJ_DIR$\FATFS\diskio.h</file>
+      <file>$PROJ_DIR$\Inc\memory_card.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ccsbcs.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\memory_card.o</file>
+      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+      <file>$PROJ_DIR$\Debug\Obj\Test.pbd</file>
+      <file>$PROJ_DIR$\Debug\Exe\Test.bin</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\init.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_it.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal.__cstat.et</file>
+      <file>$PROJ_DIR$\Debug\Obj\ff.pbi</file>
+      <file>$PROJ_DIR$\FATFS\integer.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_msp.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\CMSIS\Include\core_cmInstr.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_stm32f1xx.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_rcc.o</file>
+      <file>$PROJ_DIR$\FATFS\fattime.c</file>
+      <file>$PROJ_DIR$\FATFS\option\ccsbcs.c</file>
+      <file>$PROJ_DIR$\FATFS\diskio.c</file>
+      <file>$PROJ_DIR$\FATFS\ff.c</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sd.c</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c</file>
+      <file>$PROJ_DIR$\Src\init.c</file>
+      <file>$PROJ_DIR$\Src\stm32f1xx_it.c</file>
+      <file>$PROJ_DIR$\Src\system_stm32f1xx.c</file>
+      <file>$PROJ_DIR$\Src\stm32f1xx_hal_msp.c</file>
+      <file>$PROJ_DIR$\Src\main.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_spi_ex.o</file>
+      <file>$PROJ_DIR$\FATFS\ff.h</file>
+      <file>$PROJ_DIR$\Src\command.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\command.pbi</file>
+      <file>$PROJ_DIR$\Inc\main.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\init.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_rcc.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h</file>
+      <file>$PROJ_DIR$\Inc\stm32f1xx_hal_conf.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\init.__cstat.et</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_msp.o</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_it.__cstat.et</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_spi_ex.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_sd.h</file>
+      <file>$PROJ_DIR$\Inc\stm32f1xx_it.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\diskio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_ll_rcc.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_sd.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_sd.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_sdmmc.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_cortex.o</file>
+      <file>$PROJ_DIR$\..\Sample\Src\sd_spi.cpp</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_gpio.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal_rcc.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\sd_spi.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f1xx_hal.pbi</file>
+      <file>$TOOLKIT_DIR$\config\linker\ST\stm32f103x8.icf</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 35 19</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rcc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 110</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\memory_card.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103 11 5 92 2 36 14 43 66 67 70 119 12 96 13 99 69 4 37 32 104 27 22 61 121 49 68 29 117 42 55 98 45</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 92 13 99 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\Test.out</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 19</file>
+        </tool>
+        <tool>
+          <name>OBJCOPY</name>
+          <file> 54</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 123 9 17 3 0 93 97 26 114 116 101 72 44 88 10 23 31 52 58 25</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 88</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36 104 2 14 37 32 45 92 11 102 4 61 119 121 43 66 67 69 27 22 49 99 13 70 103 12 96 5 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\FATFS\fattime.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 15</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 3</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 119 70 103 61 117 46 57 37 32 104 27 49 96 64 68 22 12 29 5</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 64 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 57 46</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\FATFS\option\ccsbcs.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 9</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 104 57 103 61 119 64 27 22 33 70 37 32 12 96 5 89 68 49 29 117</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 89 64 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 57 33</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\FATFS\diskio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 109</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 17</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 96 104 12 64 36 119 70 42 43 37 32 5 2 47 102 103 27 22 61 55 4 49 68 29 117 57 121 11 98 69</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 47 64 57 43 2 4 121 42 55 102 11 98 36 69</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\FATFS\ff.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 63</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 0</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70 64 37 32 29 49 47 104 68 119 117 89 33 57 103 27 22 12 96 61 5</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 89 64 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 57 33 47</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 122</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 14 2 36 5 92 11 107 69 104 43 66 67 102 4 37 32 119 12 96 99 13 70 103 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 103 5 99 13 70 119 12 96 92 36 43 11 66 14 67 107 102 69 4 37 32 104 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 40</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 5 103 99 13 70 119 12 96 92 36 43 11 66 14 67 107 102 69 4 37 32 104 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 118</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 70 5 99 13 103 119 12 96 92 36 43 11 66 14 67 107 102 69 4 37 32 104 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sd.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 112</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70 2 5 99 13 103 119 12 96 107 92 36 43 11 66 14 67 102 69 4 37 32 104 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103 119 12 96 2 13 70 5 99 92 36 43 11 66 14 67 107 102 69 4 37 32 104 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\init.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 56</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 100</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 4 5 92 13 37 32 99 69 104 119 12 96 36 43 11 66 14 67 107 102 70 103 27 22 61 121 49 45 113 34 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 34 92 13 99 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\stm32f1xx_it.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 59</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 105</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 11 117 92 107 69 104 68 36 14 119 108 43 66 67 102 4 37 32 49 70 99 13 103 29 42 55 98 27 22 12 96 61 5 121 45 113</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102 108</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\system_stm32f1xx.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 23</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 38</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 104 119 37 32 68 22 49 103 12 29 5 117 70 27 96 61</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\stm32f1xx_hal_msp.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 65</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 28</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 103 5 99 13 70 119 12 96 92 36 43 11 66 14 67 107 102 69 4 37 32 104 27 22 61 121 49 45 113 68 29 117 42 55 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13 99 92 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 94</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 107 92 11 119 2 99 36 14 103 68 117 64 89 43 66 67 102 70 49 34 47 13 69 4 37 32 104 29 42 55 98 57 27 22 12 96 61 5 121 45 113 33</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 92 13 99 36 2 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 4 121 42 69 43 55 11 98 66 14 45 67 107 113 102 34 89 64 57 33 47</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Src\command.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 91</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 69 104 119 99 12 96 1 13 4 37 32 5 92 48 36 43 11 66 14 67 70 103 27 22 61 121 49 18 68 29 117 42 55 98 45</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Sample\Src\sd_spi.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 102 104 119 61 4 37 32 27 22 49 70 103 12 96 5 2 42 6 68 29 117 11 121 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 6 70 37 32 104 119 49 22 96 61 12 29 68 117 5 27 103 102 2 4 121 42 11 98</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Src\memory_card.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sd.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\..\..\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Src\init.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Src\stm32f1xx_it.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Src\stm32f1xx_hal_msp.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Src\main.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Src\command.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+
