@@ -1,0 +1,6 @@
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\bin\Debug\one.exe.config
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\bin\Debug\one.exe
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\bin\Debug\one.pdb
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\obj\Debug\one.csprojResolveAssemblyReference.cache
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\obj\Debug\one.exe
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\obj\Debug\one.pdb

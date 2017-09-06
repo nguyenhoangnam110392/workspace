@@ -1,0 +1,9 @@
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe.config
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\bin\Debug\Report_Generation.pdb
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csprojResolveAssemblyReference.cache
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.Form1.resources
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.Properties.Resources.resources
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csproj.GenerateResource.Cache
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.exe
+C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.pdb
