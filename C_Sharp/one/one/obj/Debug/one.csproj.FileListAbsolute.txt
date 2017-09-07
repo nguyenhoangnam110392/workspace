@@ -4,3 +4,9 @@ C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\bin\Debug\one.pd
 C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\obj\Debug\one.csprojResolveAssemblyReference.cache
 C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\obj\Debug\one.exe
 C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\one\one\obj\Debug\one.pdb
+D:\Git\workspace\C_Sharp\one\one\bin\Debug\one.exe.config
+D:\Git\workspace\C_Sharp\one\one\obj\Debug\one.exe
+D:\Git\workspace\C_Sharp\one\one\obj\Debug\one.pdb
+D:\Git\workspace\C_Sharp\one\one\obj\Debug\one.csprojResolveAssemblyReference.cache
+D:\Git\workspace\C_Sharp\one\one\bin\Debug\one.exe
+D:\Git\workspace\C_Sharp\one\one\bin\Debug\one.pdb

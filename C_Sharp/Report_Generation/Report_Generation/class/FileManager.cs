@@ -5,50 +5,64 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Windows.Forms;
 
-using Simple.Config;
+using Simple.Buffer;
+using Simple.ObjectFactory;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
 namespace Simple.FileManager
-{ 
-    class FileManagerClass
+{
+    public class FileManagerClass
     {
-        public static Boolean load_file(String path)
+        private BufferClass BF = null;
+
+        private FileManagerClass(BufferClass bf)
         {
-            ConfigClass cf = new ConfigClass();
+            this.BF = bf;
+        }
+
+        private FileManagerClass() : this(ObjectFactoryClass.GetInstance<BufferClass>())
+        { }
+
+
+
+
+        public Boolean load_file(String path)
+        {
+            BF.Name = "nam";
             if (File.Exists(path))
             {
                 try
                 {
                     XDocument doc = XDocument.Load(path);
 
-                    cf.content_header = get_xml_content(doc, "HEADER");
+                    //fm.content_header = get_xml_content(doc, "HEADER");
 
-                    cf.today_course = get_xml_content(doc, "TODAY-COURSE");
-                    cf.today_output = get_xml_content(doc, "TODAY-OUTPUT");
-                    cf.today_start = get_xml_content(doc, "TODAY-START");
-                    cf.today_deadline = get_xml_content(doc, "TODAY-DEADLINE");
-                    cf.today_status = get_xml_content(doc, "TODAY-STATUS");
-                    cf.today_process = get_xml_content(doc, "TODAY-PROCESS");
+                    //fm.today_course = get_xml_content(doc, "TODAY-COURSE");
+                    //fm.today_output = get_xml_content(doc, "TODAY-OUTPUT");
+                    //fm.today_start = get_xml_content(doc, "TODAY-START");
+                    //fm.today_deadline = get_xml_content(doc, "TODAY-DEADLINE");
+                    //fm.today_status = get_xml_content(doc, "TODAY-STATUS");
+                    //fm.today_process = get_xml_content(doc, "TODAY-PROCESS");
 
-                    cf.tm_course = get_xml_content(doc, "TM-COURSE");
-                    cf.tm_output = get_xml_content(doc, "TM-OUTPUT");
-                    cf.tm_start = get_xml_content(doc, "TM-START");
-                    cf.tm_deadline = get_xml_content(doc, "TM-DEADLINE");
-                    cf.tm_status = get_xml_content(doc, "TM-STATUS");
-                    cf.tm_process = get_xml_content(doc, "TM-PROCESS");
+                    //fm.tm_course = get_xml_content(doc, "TM-COURSE");
+                    //fm.tm_output = get_xml_content(doc, "TM-OUTPUT");
+                    //fm.tm_start = get_xml_content(doc, "TM-START");
+                    //fm.tm_deadline = get_xml_content(doc, "TM-DEADLINE");
+                    //fm.tm_status = get_xml_content(doc, "TM-STATUS");
+                    //fm.tm_process = get_xml_content(doc, "TM-PROCESS");
                 }
                 catch(XmlException x)
                 {
                     MessageBox.Show("Error code {0}" + x, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+
+                
+                
             }
             return true;
         }
 
-        public static String get_xml_content(XDocument doc, string match_word)
+        private String get_xml_content(XDocument doc, string match_word)
         {
             string value = string.Empty;
             match_word = match_word.ToUpper();

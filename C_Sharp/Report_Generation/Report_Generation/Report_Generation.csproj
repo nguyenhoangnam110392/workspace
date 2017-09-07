@@ -49,9 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="class\Config.cs" />
+    <Compile Include="class\Buffer.cs" />
+    <Compile Include="class\CustomAttribute.cs" />
     <Compile Include="class\FileManager.cs" />
-    <Compile Include="class\InterfaceConfig.cs" />
     <Compile Include="class\ObjectFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

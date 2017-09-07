@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\DebugInfo.cs" />
-    <Compile Include="Class\PersonalAttribute.cs" />
-    <Compile Include="Class\Rectangle.cs" />
+    <Compile Include="Class\CustomAttribute.cs" />
+    <Compile Include="Class\InputData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

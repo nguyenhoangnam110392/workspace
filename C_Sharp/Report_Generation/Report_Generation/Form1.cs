@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using Simple.Config;
 using Simple.FileManager;
+using Simple.ObjectFactory;
+using Simple.Buffer;
 
 namespace Report_Generation
 {
     public partial class Form1 : Form
     {
-        protected static ConfigClass cf = new ConfigClass();
-        
         public Form1()
         {
             InitializeComponent();
@@ -18,32 +17,35 @@ namespace Report_Generation
         
         private void LoadFile()
         {
-            cf.FilePath = @"D:\report.xml";
-            if (FileManagerClass.load_file(cf.FilePath) == false)
+            FileManagerClass fm = ObjectFactoryClass.GetInstance<FileManagerClass>();
+
+            if (fm.load_file(@"D:\report.xml") == false)
             {
                 MessageBox.Show("Error occured when loading file.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+
+            MessageBox.Show("", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void LoadDataToTextBox()
-        {
-            txt_train_today.Text = cf.today_course;
-            txt_output_today.Text = cf.today_output;
-            txt_start_today.Text = cf.today_start;
-            txt_end_today.Text = cf.today_deadline;
-            txt_status_today.Text = cf.today_status;
-            txt_process_today.Text = cf.today_process;
+        //private void LoadDataToTextBox()
+        //{
+        //    txt_train_today.Text = cf.today_course;
+        //    txt_output_today.Text = cf.today_output;
+        //    txt_start_today.Text = cf.today_start;
+        //    txt_end_today.Text = cf.today_deadline;
+        //    txt_status_today.Text = cf.today_status;
+        //    txt_process_today.Text = cf.today_process;
 
-            txt_train_next.Text = cf.tm_course;
-            txt_output_next.Text = cf.tm_output;
-            txt_start_next.Text = cf.tm_start;
-            txt_end_next.Text = cf.tm_deadline;
-            txt_status_next.Text = cf.tm_status;
-            txt_process_next.Text = cf.tm_process;
+        //    txt_train_next.Text = cf.tm_course;
+        //    txt_output_next.Text = cf.tm_output;
+        //    txt_start_next.Text = cf.tm_start;
+        //    txt_end_next.Text = cf.tm_deadline;
+        //    txt_status_next.Text = cf.tm_status;
+        //    txt_process_next.Text = cf.tm_process;
 
-            MessageBox.Show(cf.today_process, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        //    MessageBox.Show(cf.today_process, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
 
         private void btGen_Click(object sender, EventArgs e)
         {
@@ -93,7 +95,6 @@ namespace Report_Generation
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadDataToTextBox();
             String content = "[Daily report]\r\n";
             content += "=========================\r\n";
             content += "\r\n\r\n";

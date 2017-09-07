@@ -7,3 +7,12 @@ C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report
 C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csproj.GenerateResource.Cache
 C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.exe
 C:\Users\nam.nguyen\Documents\visualstudio2015\Projects\Report_Generation\Report_Generation\obj\Debug\Report_Generation.pdb
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe.config
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.exe
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.pdb
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csprojResolveAssemblyReference.cache
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.Form1.resources
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.Properties.Resources.resources
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csproj.GenerateResource.Cache
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe
+D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.pdb
