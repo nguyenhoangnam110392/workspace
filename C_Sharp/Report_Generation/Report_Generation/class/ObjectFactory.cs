@@ -10,7 +10,7 @@ namespace Simple.ObjectFactory
     class ObjectFactoryClass
     {
         private static Dictionary<Type, List<TypeChosenData>> chosenList = new Dictionary<Type, List<TypeChosenData>>();
-
+        private static Dictionary<Type, List<Type>> RegisteredTypes = new Dictionary<Type, List<Type>>();
 
         public static void Load()
         {

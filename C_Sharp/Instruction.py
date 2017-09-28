@@ -56,3 +56,16 @@ Dán đoạn sau vào command line argument
 \D:/SVN/01_MCALTraining/01_MCAL/09_mcal_e2x_dev/external/X2x/E2x/common_family/generator/FLS_CFG_CfgH_001.arxml 
 \D:/SVN/01_MCALTraining/01_MCAL/09_mcal_e2x_dev/external/X2x/E2x/common_family/generator/Mcu_Cfg001.arxml 
 \D:/SVN/01_MCALTraining/01_MCAL/09_mcal_e2x_dev/external/X2x/E2x/common_family/generator/R422_FLS_E2XFCC1_BSWMDT.arxml  
+
+
+/*-------------------Documents------------------------*/
+D:\SVN\01_MCALTraining\01_MCAL\09_mcal_e2x_dev\internal\X2x\common\modules\fls\docs\sds
+
+
+/*--------------Sau khi build bằng Davici, nhớ thêm đoạn code này vào dòng 124---------*/
+			  <REFERENCE-VALUES>		
+                <ECUC-REFERENCE-VALUE>		
+                  <DEFINITION-REF DEST="ECUC-REFERENCE-DEF">/Renesas/EcucDefs_Fls/Fls/FlsGeneral/FlsCpuFrequency</DEFINITION-REF>		
+                  <VALUE-REF DEST="ECUC-CONTAINER-VALUE">/ActiveEcuC/Mcu/McuModuleConfiguration/McuClockSettingConfig</VALUE-REF>		
+                </ECUC-REFERENCE-VALUE>		
+              </REFERENCE-VALUES>
