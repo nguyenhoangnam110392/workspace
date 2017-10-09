@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/23586031/calling-activity-class-method-from-service-class
