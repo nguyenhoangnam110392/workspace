@@ -16,3 +16,12 @@ D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Ge
 D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csproj.GenerateResource.Cache
 D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe
 D:\Git\workspace\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.pdb
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe.config
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.exe
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.pdb
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csprojResolveAssemblyReference.cache
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.Form1.resources
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.Properties.Resources.resources
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\obj\Debug\Report_Generation.csproj.GenerateResource.Cache
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.exe
+E:\Workspace\Github\C_Sharp\Report_Generation\Report_Generation\bin\Debug\Report_Generation.pdb
