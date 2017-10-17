@@ -33,12 +33,12 @@
             this.LB_Main = new System.Windows.Forms.Label();
             this.txt_header = new System.Windows.Forms.TextBox();
             this.txt_task = new System.Windows.Forms.TextBox();
-            this.txt_objective = new System.Windows.Forms.TextBox();
             this.txt_start = new System.Windows.Forms.TextBox();
             this.txt_deadline = new System.Windows.Forms.TextBox();
             this.txt_process = new System.Windows.Forms.TextBox();
             this.txt_output_path = new System.Windows.Forms.TextBox();
             this.cb_status = new System.Windows.Forms.ComboBox();
+            this.txt_objective = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btGen
@@ -76,13 +76,6 @@
             this.txt_task.Size = new System.Drawing.Size(647, 20);
             this.txt_task.TabIndex = 10;
             // 
-            // txt_objective
-            // 
-            this.txt_objective.Location = new System.Drawing.Point(108, 239);
-            this.txt_objective.Name = "txt_objective";
-            this.txt_objective.Size = new System.Drawing.Size(647, 20);
-            this.txt_objective.TabIndex = 11;
-            // 
             // txt_start
             // 
             this.txt_start.Location = new System.Drawing.Point(108, 265);
@@ -110,7 +103,7 @@
             this.txt_output_path.Name = "txt_output_path";
             this.txt_output_path.Size = new System.Drawing.Size(647, 20);
             this.txt_output_path.TabIndex = 23;
-            this.txt_output_path.Text = "D:/report.txt";
+            this.txt_output_path.Text = "report.txt";
             // 
             // cb_status
             // 
@@ -124,18 +117,25 @@
             this.cb_status.Size = new System.Drawing.Size(121, 21);
             this.cb_status.TabIndex = 24;
             // 
+            // txt_objective
+            // 
+            this.txt_objective.Location = new System.Drawing.Point(108, 239);
+            this.txt_objective.Name = "txt_objective";
+            this.txt_objective.Size = new System.Drawing.Size(647, 20);
+            this.txt_objective.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(772, 475);
+            this.Controls.Add(this.txt_objective);
             this.Controls.Add(this.cb_status);
             this.Controls.Add(this.txt_output_path);
             this.Controls.Add(this.txt_process);
             this.Controls.Add(this.txt_deadline);
             this.Controls.Add(this.txt_start);
-            this.Controls.Add(this.txt_objective);
             this.Controls.Add(this.txt_task);
             this.Controls.Add(this.txt_header);
             this.Controls.Add(this.LB_Main);
@@ -159,12 +159,12 @@
         private System.Windows.Forms.Label LB_Main;
         private System.Windows.Forms.TextBox txt_header;
         private System.Windows.Forms.TextBox txt_task;
-        private System.Windows.Forms.TextBox txt_objective;
         private System.Windows.Forms.TextBox txt_start;
         private System.Windows.Forms.TextBox txt_deadline;
         private System.Windows.Forms.TextBox txt_process;
         private System.Windows.Forms.TextBox txt_output_path;
         private System.Windows.Forms.ComboBox cb_status;
+        private System.Windows.Forms.TextBox txt_objective;
     }
 }
 

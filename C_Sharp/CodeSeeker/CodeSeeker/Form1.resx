@@ -117,10 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btSelect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAPBJREFUOE+NkzkPgkAQhfmjakvhgQWFpf/BwsLGGAIYqaxt7exotFATjxhDkHgg
+        3eoDFjmGlZe8zELefNldBiktVVVZ3h1FYbIsszhSLoQc10t8ulzZ/nBmy5XNjPmCNVttMWRmWWFD2pvd
+        kdnrbQgBUAgxzGkYogwIKqClEAAc9xYGUdNrvhtea/VGEQKAd3/EzfwusmsAcJxur08Dni8/MWD5Nb/c
+        wXD0HyDyeKLRgHcQZIJlz8jGbT9xAISQqOqGSQMg/x1BRJXcAahVpelGEYCXVUUCcLNVRX4FTFd6CmlH
+        c0BOIkT9zpTj+FeS9AHYQXZTV1LCRAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="statusPanel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAJlJREFUOE9jGHhQU1P5/+QOhv83T2HibcsZ/kOV4QZ5Ocn//99mwIlbi5j/l6Wy
+        YeCsMD6I4SADvu5hwIn/fcSNC/LS/8Nd8O8hBP99gaBhGKQYmYax4QaABZA0EcuGGwDikINRvEAORhhw
+        ASpIIo1qABkYYcBpoAAZGG7A3wPAkCUDgw0AgUl5jP8XVzGQhEF6wJoHGDAwAABil+Hp3agpSAAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>46</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIAAKQQAAlgAAAICAAAABACAAKAgBAKBBAABgYAAAAQAgAKiUAADISQEASEgAAAEA

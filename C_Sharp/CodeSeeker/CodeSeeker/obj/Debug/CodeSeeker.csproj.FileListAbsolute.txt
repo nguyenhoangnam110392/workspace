@@ -7,3 +7,12 @@ c:\users\nam.nguyen\documents\visual studio 2015\Projects\CodeSeeker\CodeSeeker\
 c:\users\nam.nguyen\documents\visual studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csproj.GenerateResource.Cache
 c:\users\nam.nguyen\documents\visual studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.exe
 c:\users\nam.nguyen\documents\visual studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.pdb
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\bin\Debug\CodeSeeker.exe.config
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.exe
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.pdb
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\bin\Debug\CodeSeeker.exe
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\bin\Debug\CodeSeeker.pdb
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csprojResolveAssemblyReference.cache
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.Form1.resources
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.Properties.Resources.resources
+C:\Users\Mr.HN\Documents\Visual Studio 2015\Projects\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csproj.GenerateResource.Cache

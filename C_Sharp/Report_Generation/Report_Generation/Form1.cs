@@ -14,7 +14,7 @@ namespace Report_Generation
         {
             InitializeComponent();
             LoadConfig();
-            LoadFile(@"E:\report.xml");
+            LoadFile("report.xml");
             LoadDataToTextBox();
         }
 
@@ -112,7 +112,7 @@ namespace Report_Generation
             element.InnerText = txt_process.Text;
             doc.DocumentElement.AppendChild(element);
 
-            doc.Save(@"E:\report.xml");
+            doc.Save("report.xml");
 
             if (MessageBox.Show("Generation file finished! Located at " + path +"\r\nDo you want to open file and exit program?", "Process", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
