@@ -12,7 +12,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.entity.StrictContentLengthStrategy;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,10 +26,15 @@ import java.util.List;
 
 public class MyPost extends AsyncTask<Void,Void,Void> {
 
-    public String data;
+    private String Address = null;
+    private double Longtitude = 0;
+    private double Latitude = 0;
 
-    public MyPost(String arg_data){
-        this.data = arg_data;
+
+    public MyPost(String address, double longtitude, double latitude){
+        this.Address = address;
+        this.Longtitude = longtitude;
+        this.Latitude = latitude;
     }
 
     @Override
@@ -39,9 +46,11 @@ public class MyPost extends AsyncTask<Void,Void,Void> {
 
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("android_location", data));
-            nameValuePairs.add(new BasicNameValuePair("android_address", ""));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            nameValuePairs.add(new BasicNameValuePair("android_longtitude", String.valueOf(Longtitude)));
+            nameValuePairs.add(new BasicNameValuePair("android_latitude", String.valueOf(Latitude)));
+            nameValuePairs.add(new BasicNameValuePair("android_address", Address));
+            //httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
 
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);

@@ -149,15 +149,13 @@ public class MyService extends Service {
                     String tmp = null;
                     try {
                         addresses = geocoder.getFromLocation(latitude, longtitude, 1);
-                        tmp = String.valueOf(longtitude) + ",";
-                        tmp += latitude + " : ";
-                        tmp += addresses.get(0).getAddressLine(0) + " - ";
+                        tmp = addresses.get(0).getAddressLine(0) + " - ";
                         tmp += getDateTime();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    new MyPost(tmp).execute(); // Post to server
+                    new MyPost(tmp, longtitude, latitude).execute(); // Post to server
                 }
 
             });
