@@ -25,6 +25,7 @@ namespace CodeSeeker
 
         bool token = true;
         UInt32 sub_folder = 0;
+        String folder_selected_path = null;
 
         /* [1] Init Form first */
         public Form1()
@@ -57,9 +58,11 @@ namespace CodeSeeker
 
             /* Private */
             FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.SelectedPath = folder_selected_path;
             if (dialog.ShowDialog() == DialogResult.OK && (setting.chkHeader_checked | setting.chkSource_checked | setting.chkLastest_checked))
             {
-                string folder_name = dialog.SelectedPath;           
+                string folder_name = dialog.SelectedPath;
+                folder_selected_path = folder_name; //Save the last selected folder
                 SubDir(folder_name, token);
                 btSearch.Enabled = true;
             }
@@ -79,6 +82,7 @@ namespace CodeSeeker
                     if (setting.chkSource_checked)
                     {
                         ext.Add(".c");
+                        ext.Add(".pm");
                     }
 
                     if (setting.chkHeader_checked)
@@ -188,39 +192,41 @@ namespace CodeSeeker
                         setting.scan_for_time_stamp(file);                                            
                     }                    
                 }
-                /* add file in list to listbox */
-                List<DateTime> main_list = setting._time_stamp.OrderBy(x => x.Year).ToList();
-
-                /* Remove older year */
-                for(int i=main_list.Count-1; i>=0; i--)
+                if (setting.enable_load && setting.chkLastest_checked)
                 {
-                    if (main_list[i].Year != DateTime.Now.Year)
+                    /* add file in list to listbox */
+                    List<DateTime> main_list = setting._time_stamp.OrderBy(x => x.Year).ToList();
+
+                    /* Remove older year */
+                    for (int i = main_list.Count - 1; i >= 0; i--)
                     {
-                        main_list.RemoveAt(i);
+                        if (main_list[i].Year != DateTime.Now.Year)
+                        {
+                            main_list.RemoveAt(i);
+                        }
+                    }
+
+                    /* Sort by day */
+                    main_list = main_list.OrderBy(x => x.Day).ToList();
+                    int latest_day = main_list[0].Day;
+                    /* Remove older date */
+                    for (int i = main_list.Count - 1; i >= 0; i--)
+                    {
+                        if (main_list[i].Day != latest_day)
+                        {
+                            main_list.RemoveAt(i);
+                        }
+                    }
+
+                    /* Sort by time */
+                    main_list = main_list.OrderBy(x => x.TimeOfDay).ToList();
+
+                    for (int i = main_list.Count - 1; i >= 0; i--)
+                    {
+                        update_listBox(file_info.name[i] + ". Date " + main_list[i].ToString("HH:mm:ss - dd/MM/yyyy"));
+                        await Task.Delay(10);
                     }
                 }
-
-                /* Sort by day */
-                main_list = main_list.OrderBy(x => x.Day).ToList();
-                int latest_day = main_list[0].Day;
-                /* Remove older date */
-                for (int i = main_list.Count-1; i>=0; i--)
-                {
-                    if(main_list[i].Day != latest_day)
-                    {
-                        main_list.RemoveAt(i);
-                    }
-                }
-
-                /* Sort by time */
-                main_list = main_list.OrderBy(x => x.TimeOfDay).ToList();
-
-                for (int i = main_list.Count - 1; i >= 0; i--)
-                {
-                    update_listBox(file_info.name[i] + ". Date " + main_list[i].ToString("HH:mm:ss - dd/MM/yyyy"));                      
-                    await Task.Delay(10);
-                }
-                
                 
             }      
         }

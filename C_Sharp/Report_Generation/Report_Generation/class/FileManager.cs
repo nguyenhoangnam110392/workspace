@@ -20,6 +20,7 @@ namespace Simple.FileManager
         public int deadline = 4;
         public int status = 5;
         public int process = 6;
+        public int title = 7;
 
         public void load_file_content(String path)
         {

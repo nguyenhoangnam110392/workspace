@@ -39,12 +39,13 @@
             this.txt_output_path = new System.Windows.Forms.TextBox();
             this.cb_status = new System.Windows.Forms.ComboBox();
             this.txt_objective = new System.Windows.Forms.TextBox();
+            this.txt_title = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btGen
             // 
             this.btGen.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btGen.Location = new System.Drawing.Point(15, 405);
+            this.btGen.Location = new System.Drawing.Point(15, 424);
             this.btGen.Name = "btGen";
             this.btGen.Size = new System.Drawing.Size(740, 60);
             this.btGen.TabIndex = 4;
@@ -71,35 +72,35 @@
             // 
             // txt_task
             // 
-            this.txt_task.Location = new System.Drawing.Point(108, 213);
+            this.txt_task.Location = new System.Drawing.Point(108, 215);
             this.txt_task.Name = "txt_task";
             this.txt_task.Size = new System.Drawing.Size(647, 20);
             this.txt_task.TabIndex = 10;
             // 
             // txt_start
             // 
-            this.txt_start.Location = new System.Drawing.Point(108, 265);
+            this.txt_start.Location = new System.Drawing.Point(108, 267);
             this.txt_start.Name = "txt_start";
             this.txt_start.Size = new System.Drawing.Size(647, 20);
             this.txt_start.TabIndex = 12;
             // 
             // txt_deadline
             // 
-            this.txt_deadline.Location = new System.Drawing.Point(108, 291);
+            this.txt_deadline.Location = new System.Drawing.Point(108, 293);
             this.txt_deadline.Name = "txt_deadline";
             this.txt_deadline.Size = new System.Drawing.Size(647, 20);
             this.txt_deadline.TabIndex = 13;
             // 
             // txt_process
             // 
-            this.txt_process.Location = new System.Drawing.Point(108, 343);
+            this.txt_process.Location = new System.Drawing.Point(108, 345);
             this.txt_process.Name = "txt_process";
             this.txt_process.Size = new System.Drawing.Size(647, 20);
             this.txt_process.TabIndex = 21;
             // 
             // txt_output_path
             // 
-            this.txt_output_path.Location = new System.Drawing.Point(108, 369);
+            this.txt_output_path.Location = new System.Drawing.Point(108, 371);
             this.txt_output_path.Name = "txt_output_path";
             this.txt_output_path.Size = new System.Drawing.Size(647, 20);
             this.txt_output_path.TabIndex = 23;
@@ -112,24 +113,32 @@
             "Pending",
             "On Going",
             "Done"});
-            this.cb_status.Location = new System.Drawing.Point(108, 316);
+            this.cb_status.Location = new System.Drawing.Point(108, 318);
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(121, 21);
             this.cb_status.TabIndex = 24;
             // 
             // txt_objective
             // 
-            this.txt_objective.Location = new System.Drawing.Point(108, 239);
+            this.txt_objective.Location = new System.Drawing.Point(108, 241);
             this.txt_objective.Name = "txt_objective";
             this.txt_objective.Size = new System.Drawing.Size(647, 20);
             this.txt_objective.TabIndex = 25;
+            // 
+            // txt_title
+            // 
+            this.txt_title.Location = new System.Drawing.Point(108, 172);
+            this.txt_title.Name = "txt_title";
+            this.txt_title.Size = new System.Drawing.Size(647, 20);
+            this.txt_title.TabIndex = 26;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(772, 475);
+            this.ClientSize = new System.Drawing.Size(772, 496);
+            this.Controls.Add(this.txt_title);
             this.Controls.Add(this.txt_objective);
             this.Controls.Add(this.cb_status);
             this.Controls.Add(this.txt_output_path);
@@ -165,6 +174,7 @@
         private System.Windows.Forms.TextBox txt_output_path;
         private System.Windows.Forms.ComboBox cb_status;
         private System.Windows.Forms.TextBox txt_objective;
+        private System.Windows.Forms.TextBox txt_title;
     }
 }
 

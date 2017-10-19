@@ -36,7 +36,7 @@ namespace Report_Generation
         }
 
         private void LoadDataToTextBox()
-        {
+        {           
             txt_header.Text = fm.buffer[fm.header];
             txt_task.Text = fm.buffer[fm.task];
             txt_objective.Text = fm.buffer[fm.objective];
@@ -44,6 +44,7 @@ namespace Report_Generation
             txt_deadline.Text = fm.buffer[fm.deadline];
             cb_status.SelectedIndex = int.Parse(fm.buffer[fm.status]);
             txt_process.Text = fm.buffer[fm.process];
+            txt_title.Text = fm.buffer[fm.title];
             //MessageBox.Show(fm.today_process, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -55,7 +56,7 @@ namespace Report_Generation
                          Linh Clayton <linh.clayton@banvien.com.vn>;Vien Nguyen <vien.nguyen@banvien.com>;
                          linda.tran@banvien.com <linda.tran@banvien.com>;THANG Nguyen Ba <thang.nguyen@banvien.com.vn>;
                          Tu Pham <tu.pham@banvien.com.vn>;Phu Truong Ngoc <phu.truong@banvien.com.vn>;" + "\r\n";
-            content += "Title: [BV] [MCAL] Daily Report - Report " + DateTime.Now.ToString("dd/MM/yyyy") + " - Nguyen Hoang Nam\r\n\r\n";
+            content += "Title: [BV] [MCAL] Daily Report - Report " + DateTime.Now.ToString("dd/MM/yyyy") + " - " + txt_title.Text + "\r\n\r\n";
             content += "[Daily report]\r\n";
             content += "=========================\r\n";
             content += txt_header.Text + "\r\n";
@@ -66,7 +67,7 @@ namespace Report_Generation
             content += "            Objective            :" + txt_objective.Text + "\r\n";
             content += "            Start day            :" + txt_start.Text + "\r\n";
             content += "            Deadline             :" + txt_deadline.Text + "\r\n";
-            content += "            Status               :" + cb_status.SelectedIndex + "\r\n";
+            content += "            Status               :" + cb_status.Items[cb_status.SelectedIndex] + "\r\n";
             content += "            Process              :" + txt_process.Text + "\r\n";
             content += "            Detail               :" + "\r\n";
             content += "            >>>>>>>>>> Issue/Risk:" + "\r\n";
@@ -112,6 +113,10 @@ namespace Report_Generation
             element.InnerText = txt_process.Text;
             doc.DocumentElement.AppendChild(element);
 
+            element = doc.CreateElement("TITLE");
+            element.InnerText = txt_title.Text;
+            doc.DocumentElement.AppendChild(element);
+
             doc.Save("report.xml");
 
             if (MessageBox.Show("Generation file finished! Located at " + path +"\r\nDo you want to open file and exit program?", "Process", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -127,11 +132,11 @@ namespace Report_Generation
             content += "[Daily report]\r\n";
             content += "=========================\r\n";
             content += "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
+            content += "=========================\r\n\r\n\r\n";
+            content += "[Name]\r\n";
             content += "=========================\r\n\r\n";
-            content += "[Activities]\r\n";
-            content += "=========================\r\n";
-            content += "1 [Training course]              " + "\r\n\r\n";
-            content += "            Output               " + "\r\n\r\n";
+            content += "1. [Today Task]                  " + "\r\n\r\n";
+            content += "            Objective            " + "\r\n\r\n";
             content += "            Start day            " + "\r\n\r\n";
             content += "            Deadline             " + "\r\n\r\n";
             content += "            Status               " + "\r\n\r\n";

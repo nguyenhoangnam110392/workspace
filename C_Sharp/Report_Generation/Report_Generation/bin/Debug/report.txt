@@ -3,7 +3,7 @@ CC: Trung Hoang <trung.hoang@banvien.com.vn>;TIEN Nguyen Huu <tien.nguyen@banvie
                          Linh Clayton <linh.clayton@banvien.com.vn>;Vien Nguyen <vien.nguyen@banvien.com>;
                          linda.tran@banvien.com <linda.tran@banvien.com>;THANG Nguyen Ba <thang.nguyen@banvien.com.vn>;
                          Tu Pham <tu.pham@banvien.com.vn>;Phu Truong Ngoc <phu.truong@banvien.com.vn>;
-Title: [BV] [MCAL] Daily Report - Report 16/10/2017 - Nguyen Hoang Nam
+Title: [BV] [MCAL] Daily Report - Report 17/10/2017 - Nguyen Duy
 
 [Daily report]
 =========================
@@ -15,10 +15,10 @@ Title: [BV] [MCAL] Daily Report - Report 16/10/2017 - Nguyen Hoang Nam
 [Activities]
 =========================
 1.[Today Task]                   :Did Acceptance Test for D1x and collected issues, then fixing it.
-            Objective            :
+            Objective            :fsfd
             Start day            :Oct 16, 2017
             Deadline             :Oct 17, 2017
-            Status               :1
+            Status               :On Going
             Process              :80%
             Detail               :
             >>>>>>>>>> Issue/Risk:
