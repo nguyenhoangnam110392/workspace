@@ -34,17 +34,16 @@ public class MyService extends Service {
     private double longtitude = 0;
     private double latitude = 0;
 
-    public static final long NOTIFY_INTERVAL = 900 * 1000; // 10 seconds
+    public static final long NOTIFY_INTERVAL = 180 * 1000;
     private Handler mHandler = new Handler();
     private Timer mTimer = null;
     Location mLastLocation;
     Geocoder geocoder = new Geocoder(MyService.this, Locale.getDefault());
-    List<Address> addresses;
+    List<Address> geo;
+    private boolean update_ticket = true;
 
     private class LocationListener implements android.location.LocationListener
     {
-
-
         public LocationListener(String provider)
         {
             mLastLocation = new Location(provider);
@@ -59,19 +58,13 @@ public class MyService extends Service {
         }
 
         @Override
-        public void onProviderDisabled(String provider)
-        {
-        }
+        public void onProviderDisabled(String provider) {}
 
         @Override
-        public void onProviderEnabled(String provider)
-        {
-        }
+        public void onProviderEnabled(String provider) {}
 
         @Override
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
-        }
+        public void onStatusChanged(String provider, int status, Bundle extras) {}
     }
 
     LocationListener[] mLocationListeners = new LocationListener[] {
@@ -86,32 +79,11 @@ public class MyService extends Service {
 
     @Override
     public void onCreate() {
-        Toast.makeText(this, "Congrats! MyService Created", Toast.LENGTH_LONG).show();
-
-        initializeLocationManager();
-        try {
-            mLocationManager.requestLocationUpdates(
-                    LocationManager.NETWORK_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,
-                    mLocationListeners[1]);
-        } catch (java.lang.SecurityException ex) {
-            Log.i(TAG, "fail to request location update, ignore", ex);
-        } catch (IllegalArgumentException ex) {
-            Log.d(TAG, "network provider does not exist, " + ex.getMessage());
-        }
-        try {
-            mLocationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,
-                    mLocationListeners[0]);
-        } catch (java.lang.SecurityException ex) {
-            Log.i(TAG, "fail to request location update, ignore", ex);
-        } catch (IllegalArgumentException ex) {
-            Log.d(TAG, "gps provider does not exist " + ex.getMessage());
-        }
+        Toast.makeText(this, "MyService Created", Toast.LENGTH_LONG).show();
 
         if(mTimer != null) {
             mTimer.cancel();
         } else {
-            // recreate new
             mTimer = new Timer();
         }
         // schedule task
@@ -142,20 +114,35 @@ public class MyService extends Service {
 
                 @Override
                 public void run() {
-                    // display toast
-                    Toast.makeText(getApplicationContext(), "Location: "+longtitude+","+latitude,
-                            Toast.LENGTH_SHORT).show();
+                    if(update_ticket) {
+                        update_ticket = false;
+                        initializeLocationManager();
+                        LocationUpdate();
+                        Toast.makeText(getApplicationContext(), "Location: " + longtitude + "," + latitude,
+                                Toast.LENGTH_SHORT).show();
 
-                    String tmp = null;
-                    try {
-                        addresses = geocoder.getFromLocation(latitude, longtitude, 1);
-                        tmp = addresses.get(0).getAddressLine(0) + " - ";
-                        tmp += getDateTime();
+                        String address = null;
+                        try {
+                            geo = geocoder.getFromLocation(latitude, longtitude, 1);
+                            address = geo.get(0).getAddressLine(0);
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        if(longtitude != 0 && latitude != 0) {
+                            new MyPost(address, longtitude, latitude, getDateTime()).execute(); // Post to server
+                        }
+                        update_ticket = true; //need to put this variable into post method
                     }
-                    new MyPost(tmp, longtitude, latitude).execute(); // Post to server
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mLocationManager.removeUpdates(mLocationListeners[0]);
+                            mLocationManager.removeUpdates(mLocationListeners[1]);
+                        }
+                    }, 60000);
+
                 }
 
             });
@@ -163,9 +150,30 @@ public class MyService extends Service {
 
         private String getDateTime() {
             // get date time in custom format
-            SimpleDateFormat sdf = new SimpleDateFormat("[yyyy/MM/dd - HH:mm:ss]");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd - HH:mm:ss");
             return sdf.format(new Date());
         }
 
+        private void LocationUpdate(){
+            try {
+                mLocationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER, 0, 0,
+                        mLocationListeners[1]);
+            } catch (java.lang.SecurityException ex) {
+                Log.i(TAG, "fail to request location update, ignore", ex);
+            } catch (IllegalArgumentException ex) {
+                Log.d(TAG, "network provider does not exist, " + ex.getMessage());
+            }
+        /*
+        try {
+            mLocationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,
+                    mLocationListeners[0]);
+        } catch (java.lang.SecurityException ex) {
+            Log.i(TAG, "fail to request location update, ignore", ex);
+        } catch (IllegalArgumentException ex) {
+            Log.d(TAG, "gps provider does not exist " + ex.getMessage());
+        }*/
+        }
     }
 }

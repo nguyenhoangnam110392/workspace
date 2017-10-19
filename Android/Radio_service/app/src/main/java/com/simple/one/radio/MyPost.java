@@ -29,12 +29,13 @@ public class MyPost extends AsyncTask<Void,Void,Void> {
     private String Address = null;
     private double Longtitude = 0;
     private double Latitude = 0;
+    private String DateTime = null;
 
-
-    public MyPost(String address, double longtitude, double latitude){
+    public MyPost(String address, double longtitude, double latitude, String datatime){
         this.Address = address;
         this.Longtitude = longtitude;
         this.Latitude = latitude;
+        this.DateTime = datatime;
     }
 
     @Override
@@ -42,13 +43,14 @@ public class MyPost extends AsyncTask<Void,Void,Void> {
         // TODO Auto-generated method stub
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://luutruthongtinn.000webhostapp.com/test.php");
+        HttpPost httppost = new HttpPost("https://luutruthongtinn.000webhostapp.com/Location/Location_receive.php");
 
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("android_longtitude", String.valueOf(Longtitude)));
             nameValuePairs.add(new BasicNameValuePair("android_latitude", String.valueOf(Latitude)));
             nameValuePairs.add(new BasicNameValuePair("android_address", Address));
+            nameValuePairs.add(new BasicNameValuePair("android_datetime", DateTime));
             //httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
 
