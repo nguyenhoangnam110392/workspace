@@ -30,11 +30,25 @@ import static com.simple.one.radio.R.id.mainListView;
  */
 
 public class Setting {
-    public LocationManager locationManager = null;
-    public Activity activity = null;
+    /*------------ constant -------------------*/
+    public long NOTIFY_SECOND = 200;
+    public long NOTIFY_MINUTE = 0;
+    public long NOTIFY_INTERVAL = (NOTIFY_MINUTE * 60 + NOTIFY_SECOND) * 1000;
+    public long GPS_NOTIFY_OFF_SECOND = 20;
+    public long GPS_NOTIFY_OFF_INTERVAL = GPS_NOTIFY_OFF_SECOND * 1000;
 
-    public Setting(LocationManager location_main, Activity activity_main){
+    /*------------ variables -------------------*/
+    public String Address = null;
+    public double Longtitude = 0;
+    public double Latitude = 0;
+    public String DateTime = null;
+    public String response_from_web = null;
+
+    /*-------------- object -------------------*/
+    public LocationManager locationManager = null;
+    public MyService myService = null;
+
+    public Setting(LocationManager location_main){
         this.locationManager = location_main;
-        this.activity = activity_main;
     }
 }

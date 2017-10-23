@@ -4,15 +4,16 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Toast;
 
 /**
  * Created by Mr.HN on 10/19/2017.
  */
 
-public class API{
+public class API {
     Setting setting;
 
-    public API(Setting setting_from_main){
+    public API(Setting setting_from_main) {
         this.setting = setting_from_main;
     }
 
@@ -24,13 +25,14 @@ public class API{
         }
         return false;
     }
-
+/*
     public boolean check_internet_connection(){
-        ConnectivityManager ConnectionManager=(ConnectivityManager)setting.activity.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo= ConnectionManager.getActiveNetworkInfo();
+        ConnectivityManager ConnectionManager = (ConnectivityManager)setting.activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = ConnectionManager.getActiveNetworkInfo();
         if(networkInfo != null && networkInfo.isConnected()) {
             return true;
         }
         return false;
     }
+    */
 }

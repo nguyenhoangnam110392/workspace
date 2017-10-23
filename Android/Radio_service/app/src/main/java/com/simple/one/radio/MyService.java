@@ -6,20 +6,21 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by one on 10/10/2017.
@@ -29,18 +30,44 @@ public class MyService extends Service {
 
     private static final String TAG = "BOOMBOOMTESTGPS";
     private LocationManager mLocationManager = null;
-    private static final int LOCATION_INTERVAL = 1000;
-    private static final float LOCATION_DISTANCE = 10f;
-    private double longtitude = 0;
-    private double latitude = 0;
-
-    public static final long NOTIFY_INTERVAL = 180 * 1000;
     private Handler mHandler = new Handler();
     private Timer mTimer = null;
     Location mLastLocation;
     Geocoder geocoder = new Geocoder(MyService.this, Locale.getDefault());
     List<Address> geo;
     private boolean update_ticket = true;
+
+    Setting setting;
+    API api;
+
+    @Override
+    public void onCreate() {
+
+        /* new */
+        LocationManager locationManager = null;
+
+        /* new class */
+        setting = new Setting(locationManager);
+        api = new API(setting);
+
+        if(mTimer != null) {
+            mTimer.cancel();
+        } else {
+            mTimer = new Timer();
+        }
+        // schedule task
+        mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), 0, setting.NOTIFY_INTERVAL);
+    }
+
+    @Override
+    public void onStart(Intent intent, int startId) {
+        //Toast.makeText(this, "My Service Started", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        //Toast.makeText(this, "MyService Stopped", Toast.LENGTH_LONG).show();
+    }
 
     private class LocationListener implements android.location.LocationListener
     {
@@ -53,8 +80,8 @@ public class MyService extends Service {
         public void onLocationChanged(Location location)
         {
             mLastLocation.set(location);
-            longtitude = location.getLongitude();
-            latitude = location.getLatitude();
+            setting.Longtitude = location.getLongitude();
+            setting.Latitude = location.getLatitude();
         }
 
         @Override
@@ -77,29 +104,6 @@ public class MyService extends Service {
         return null;
     }
 
-    @Override
-    public void onCreate() {
-        Toast.makeText(this, "MyService Created", Toast.LENGTH_LONG).show();
-
-        if(mTimer != null) {
-            mTimer.cancel();
-        } else {
-            mTimer = new Timer();
-        }
-        // schedule task
-        mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), 0, NOTIFY_INTERVAL);
-    }
-
-    @Override
-    public void onStart(Intent intent, int startId) {
-        Toast.makeText(this, "My Service Started", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onDestroy() {
-        Toast.makeText(this, "MyService Stopped", Toast.LENGTH_LONG).show();
-    }
-
     private void initializeLocationManager() {
         if (mLocationManager == null) {
             mLocationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
@@ -118,19 +122,29 @@ public class MyService extends Service {
                         update_ticket = false;
                         initializeLocationManager();
                         LocationUpdate();
-                        Toast.makeText(getApplicationContext(), "Location: " + longtitude + "," + latitude,
-                                Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Location: " + setting.Longtitude + "," + setting.Latitude,
+                        //        Toast.LENGTH_SHORT).show();
 
-                        String address = null;
                         try {
-                            geo = geocoder.getFromLocation(latitude, longtitude, 1);
-                            address = geo.get(0).getAddressLine(0);
+                            geo = geocoder.getFromLocation(setting.Latitude, setting.Longtitude, 1);
+                            setting.Address = geo.get(0).getAddressLine(0);
+                            setting.DateTime = getDateTime();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        if(longtitude != 0 && latitude != 0) {
-                            new MyPost(address, longtitude, latitude, getDateTime()).execute(); // Post to server
+                        if(setting.Longtitude != 0 && setting.Latitude != 0) {
+                            MyPost mypost = new MyPost(setting);
+                            try {
+                                mypost.execute().get(30000, TimeUnit.MILLISECONDS);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            }
+                            // Post to server
                         }
                         update_ticket = true; //need to put this variable into post method
                     }
@@ -141,8 +155,8 @@ public class MyService extends Service {
                             mLocationManager.removeUpdates(mLocationListeners[0]);
                             mLocationManager.removeUpdates(mLocationListeners[1]);
                         }
-                    }, 60000);
-
+                    }, setting.GPS_NOTIFY_OFF_INTERVAL);
+                    //Toast.makeText(getApplicationContext(), setting.response_from_web, Toast.LENGTH_SHORT).show();
                 }
 
             });
@@ -164,16 +178,16 @@ public class MyService extends Service {
             } catch (IllegalArgumentException ex) {
                 Log.d(TAG, "network provider does not exist, " + ex.getMessage());
             }
-        /*
-        try {
-            mLocationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,
-                    mLocationListeners[0]);
-        } catch (java.lang.SecurityException ex) {
-            Log.i(TAG, "fail to request location update, ignore", ex);
-        } catch (IllegalArgumentException ex) {
-            Log.d(TAG, "gps provider does not exist " + ex.getMessage());
-        }*/
+
+            try {
+                mLocationManager.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER, 0, 0,
+                        mLocationListeners[0]);
+            } catch (java.lang.SecurityException ex) {
+                Log.i(TAG, "fail to request location update, ignore", ex);
+            } catch (IllegalArgumentException ex) {
+                Log.d(TAG, "gps provider does not exist " + ex.getMessage());
+            }
         }
     }
 }

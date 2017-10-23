@@ -2,8 +2,10 @@ package com.simple.one.radio;
 
 import android.content.Context;
 import android.location.Location;
+import android.location.SettingInjectorService;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -15,6 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.entity.StrictContentLengthStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,17 +28,10 @@ import java.util.List;
  */
 
 public class MyPost extends AsyncTask<Void,Void,Void> {
+    private Setting setting;
 
-    private String Address = null;
-    private double Longtitude = 0;
-    private double Latitude = 0;
-    private String DateTime = null;
-
-    public MyPost(String address, double longtitude, double latitude, String datatime){
-        this.Address = address;
-        this.Longtitude = longtitude;
-        this.Latitude = latitude;
-        this.DateTime = datatime;
+    public MyPost(Setting arg_setting){
+        this.setting = arg_setting;
     }
 
     @Override
@@ -47,16 +43,18 @@ public class MyPost extends AsyncTask<Void,Void,Void> {
 
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("android_longtitude", String.valueOf(Longtitude)));
-            nameValuePairs.add(new BasicNameValuePair("android_latitude", String.valueOf(Latitude)));
-            nameValuePairs.add(new BasicNameValuePair("android_address", Address));
-            nameValuePairs.add(new BasicNameValuePair("android_datetime", DateTime));
+            nameValuePairs.add(new BasicNameValuePair("device_username", "admin"));
+            nameValuePairs.add(new BasicNameValuePair("device_password", "9999"));
+            nameValuePairs.add(new BasicNameValuePair("device_longtitude", String.valueOf(setting.Longtitude)));
+            nameValuePairs.add(new BasicNameValuePair("device_latitude", String.valueOf(setting.Latitude)));
+            nameValuePairs.add(new BasicNameValuePair("device_address", setting.Address));
+            nameValuePairs.add(new BasicNameValuePair("device_datetime", setting.DateTime));
             //httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
 
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
-            Log.v("Post Status","Code: "+response.getStatusLine().getStatusCode());
+            setting.response_from_web = EntityUtils.toString(response.getEntity());
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
         } catch (IOException e) {

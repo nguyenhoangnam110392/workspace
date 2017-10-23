@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -13,13 +14,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* new */
-        LocationManager locationManager = null;
-        Activity activity = null;
-
-        /* new class */
-        Setting setting = new Setting(locationManager, MainActivity.this);
-        API api = new API(setting);
+        Toast.makeText(this, "Start.", Toast.LENGTH_LONG).show();
     }
 
     @Override
