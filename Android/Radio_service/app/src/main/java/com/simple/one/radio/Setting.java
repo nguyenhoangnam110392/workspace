@@ -31,11 +31,12 @@ import static com.simple.one.radio.R.id.mainListView;
 
 public class Setting {
     /*------------ constant -------------------*/
-    public long NOTIFY_SECOND = 200;
+    public long NOTIFY_SECOND = 60;
     public long NOTIFY_MINUTE = 0;
     public long NOTIFY_INTERVAL = (NOTIFY_MINUTE * 60 + NOTIFY_SECOND) * 1000;
     public long GPS_NOTIFY_OFF_SECOND = 20;
     public long GPS_NOTIFY_OFF_INTERVAL = GPS_NOTIFY_OFF_SECOND * 1000;
+    public int TAKE_PHOTO_CODE = 0;
 
     /*------------ variables -------------------*/
     public String Address = null;
@@ -46,7 +47,6 @@ public class Setting {
 
     /*-------------- object -------------------*/
     public LocationManager locationManager = null;
-    public MyService myService = null;
 
     public Setting(LocationManager location_main){
         this.locationManager = location_main;

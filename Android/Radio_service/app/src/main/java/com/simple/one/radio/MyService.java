@@ -48,7 +48,7 @@ public class MyService extends Service {
 
         /* new class */
         setting = new Setting(locationManager);
-        api = new API(setting);
+        api = new API(setting, this);
 
         if(mTimer != null) {
             mTimer.cancel();
@@ -61,7 +61,7 @@ public class MyService extends Service {
 
     @Override
     public void onStart(Intent intent, int startId) {
-        //Toast.makeText(this, "My Service Started", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Radio Started", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -133,7 +133,7 @@ public class MyService extends Service {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        if(setting.Longtitude != 0 && setting.Latitude != 0) {
+                        //if(setting.Longtitude != 0 && setting.Latitude != 0) {
                             MyPost mypost = new MyPost(setting);
                             try {
                                 mypost.execute().get(30000, TimeUnit.MILLISECONDS);
@@ -144,8 +144,7 @@ public class MyService extends Service {
                             } catch (TimeoutException e) {
                                 e.printStackTrace();
                             }
-                            // Post to server
-                        }
+                        //}
                         update_ticket = true; //need to put this variable into post method
                     }
                     final Handler handler = new Handler();
@@ -154,9 +153,10 @@ public class MyService extends Service {
                         public void run() {
                             mLocationManager.removeUpdates(mLocationListeners[0]);
                             mLocationManager.removeUpdates(mLocationListeners[1]);
+                            //api.takeSnapShots();
+                            //Toast.makeText(getApplicationContext(), "Image snapshot Done",Toast.LENGTH_LONG).show();
                         }
                     }, setting.GPS_NOTIFY_OFF_INTERVAL);
-                    //Toast.makeText(getApplicationContext(), setting.response_from_web, Toast.LENGTH_SHORT).show();
                 }
 
             });
@@ -169,6 +169,7 @@ public class MyService extends Service {
         }
 
         private void LocationUpdate(){
+
             try {
                 mLocationManager.requestLocationUpdates(
                         LocationManager.NETWORK_PROVIDER, 0, 0,
@@ -178,7 +179,7 @@ public class MyService extends Service {
             } catch (IllegalArgumentException ex) {
                 Log.d(TAG, "network provider does not exist, " + ex.getMessage());
             }
-
+            /*
             try {
                 mLocationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER, 0, 0,
@@ -188,6 +189,7 @@ public class MyService extends Service {
             } catch (IllegalArgumentException ex) {
                 Log.d(TAG, "gps provider does not exist " + ex.getMessage());
             }
+*/
         }
     }
 }
