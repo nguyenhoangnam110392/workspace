@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userOverrides>
+    <override>
+        <path>E:\GitHub\workspace\STM32F1\Blink\Src\onewire.c</path>
+        <encoding>System</encoding>
+    </override>
+</userOverrides>
