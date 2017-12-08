@@ -54,8 +54,11 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
 
+uint8_t data[14] = {NULL};
 uint8_t retVal = HAL_OK;
 uint8_t *ptr;
+uint16_t temperature = NULL;
+uint8_t LoopCount = 0x0F;
  
 /* Private function prototypes -----------------------------------------------*/
 int main(void)
@@ -69,11 +72,20 @@ int main(void)
   MX_I2C1_Init();
 
   ptr = calloc(1, 8);
-  retVal = mpu6050_init(&hi2c1, ptr);
+  do
+  {
+    retVal = mpu6050_init_gyro(&hi2c1);
+    LoopCount--;
+  }
+  while((retVal != HAL_OK) && (LoopCount > 0));
    
   while (1)
   {
-
+    if(HAL_OK == retVal)
+    {
+      retVal = read_temperature(&hi2c1, ptr);
+      memcpy(&data[0], ptr, 14);
+    }
   }
 }
 

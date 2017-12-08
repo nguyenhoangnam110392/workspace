@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.general.xcl" --backend -f "E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.general.xcl" --backend -f "E:\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.general.xcl" --debug_file=$debugfile --backend -f "E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.general.xcl" --debug_file=$debugfile --backend -f "E:\workspace\STM32F1\Projects\MPU6050\EWARM\settings\Test.Test.driver.xcl" 
 }

@@ -5,7 +5,11 @@
 #include "stm32f1xx_hal.h"
 
 /* API */
-uint8_t mpu6050_init(I2C_HandleTypeDef *hi2c, uint8_t *ptr);
+uint8_t mpu6050_init_gyro(I2C_HandleTypeDef *hi2c);
+uint8_t mpu6050_init(I2C_HandleTypeDef *hi2c);
+uint8_t read_temperature(I2C_HandleTypeDef *hi2c, uint8_t *ptr);                     
+
+/* Internal Function */
 uint8_t i2c_write(I2C_HandleTypeDef *hi2c, uint8_t device_address, 
                   uint8_t memory_address, uint8_t *data, uint8_t number_of_bit);
 uint8_t i2c_read(I2C_HandleTypeDef *hi2c, uint8_t device_address, 
@@ -14,6 +18,7 @@ uint8_t i2c_read(I2C_HandleTypeDef *hi2c, uint8_t device_address,
 /* Specific define value */
 #define MPU_OK                  0x01
 #define MPU_NOT_OK              0x00
+#define NULL_VALUE              0x00
 
 /* Address */
 #define ADDRESS_AD0_LOW         0x68 

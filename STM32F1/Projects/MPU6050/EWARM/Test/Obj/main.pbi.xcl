@@ -1,16 +1,16 @@
-"E:\GitHub\workspace\STM32F1\Projects\MPU6050\Src\main.c"
+"E:\workspace\STM32F1\Projects\MPU6050\Src\main.c"
 -std=c11
 -ferror-limit=0
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM/../Inc
+E:\workspace\STM32F1\Projects\MPU6050\EWARM/../Inc
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
+E:\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+E:\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
+E:\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/CMSIS/Include
+E:\workspace\STM32F1\Projects\MPU6050\EWARM/../Drivers/CMSIS/Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include
 -I
@@ -18,15 +18,15 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc\c
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\Inc
+E:\workspace\STM32F1\Projects\MPU6050\Inc
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\Drivers\STM32F1xx_HAL_Driver\Inc
+E:\workspace\STM32F1\Projects\MPU6050\Drivers\STM32F1xx_HAL_Driver\Inc
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
+E:\workspace\STM32F1\Projects\MPU6050\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\Drivers\CMSIS\Device\ST\STM32F1xx\Include
+E:\workspace\STM32F1\Projects\MPU6050\Drivers\CMSIS\Device\ST\STM32F1xx\Include
 -I
-E:\GitHub\workspace\STM32F1\Projects\MPU6050\Drivers\CMSIS\Include
+E:\workspace\STM32F1\Projects\MPU6050\Drivers\CMSIS\Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include
 -D__CHAR_BITS__=8
