@@ -161,3 +161,15 @@ uint8_t i2c_write(I2C_HandleTypeDef *hi2c, uint8_t device_address,
   
   return HAL_OK;
 }
+
+uint8_t i2c_read_dma(I2C_HandleTypeDef *hi2c, uint8_t device_address, 
+                  uint8_t memory_address, uint8_t *data, uint8_t number_of_bit)
+{ 
+  if(HAL_I2C_Mem_Read_DMA(hi2c, device_address, memory_address,
+  I2C_MEMADD_SIZE_8BIT, &data[0], number_of_bit) != HAL_OK)
+  {
+    return HAL_ERROR;
+  }
+  
+  return HAL_OK;
+}

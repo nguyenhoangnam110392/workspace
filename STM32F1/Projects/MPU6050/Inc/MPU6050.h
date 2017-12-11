@@ -14,6 +14,8 @@ uint8_t i2c_write(I2C_HandleTypeDef *hi2c, uint8_t device_address,
                   uint8_t memory_address, uint8_t *data, uint8_t number_of_bit);
 uint8_t i2c_read(I2C_HandleTypeDef *hi2c, uint8_t device_address, 
                   uint8_t memory_address, uint8_t *data, uint8_t number_of_bit);
+uint8_t i2c_read_dma(I2C_HandleTypeDef *hi2c, uint8_t device_address, 
+                  uint8_t memory_address, uint8_t *data, uint8_t number_of_bit);
 
 /* Specific define value */
 #define MPU_OK                  0x01

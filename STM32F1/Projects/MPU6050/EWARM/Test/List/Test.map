@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.20.1.14183/W32 for ARM                30/Nov/2017  00:12:31
+# IAR ELF Linker V8.20.1.14183/W32 for ARM                10/Dec/2017  18:11:42
 # Copyright 2007-2017 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,7 +8,7 @@
 #    Map file     =  
 #        E:\workspace\STM32F1\Projects\MPU6050\EWARM\Test\List\Test.map
 #    Command line =  
-#        -f C:\Users\Nam\AppData\Local\Temp\EW9697.tmp
+#        -f C:\Users\Me\AppData\Local\Temp\EW6426.tmp
 #        (E:\workspace\STM32F1\Projects\MPU6050\EWARM\Test\Obj\main.o
 #        E:\workspace\STM32F1\Projects\MPU6050\EWARM\Test\Obj\MPU6050.o
 #        E:\workspace\STM32F1\Projects\MPU6050\EWARM\Test\Obj\startup_stm32f103xb.o

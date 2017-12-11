@@ -3,13 +3,13 @@
     <StLinkDriver>
         <stlinkserialNo>10312043</stlinkserialNo>
         <stlinkfoundProbes />
-        <CStepIntDis>_ 0</CStepIntDis>
-        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <stlinkResetStyle>0</stlinkResetStyle>
         <stlinkResetStrategy>3</stlinkResetStrategy>
+        <CStepIntDis>_ 0</CStepIntDis>
+        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1309349673</Checksum>
+        <Checksum>3575549089</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -98,12 +98,6 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints2>
-        <Count>0</Count>
-    </Breakpoints2>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -113,12 +107,6 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
-    <Aliases>
-        <A0>_ "E:\GitHub\workspace\STM32F1\Projects\MPU6050.Gen\Test\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c" "E:\workspace\STM32F1\Projects\MPU6050\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c"</A0>
-        <A1>_ "E:\GitHub\workspace\STM32F1\Projects\MPU6050.Gen\Test\Src\main.c" "E:\GitHub\workspace\STM32F1\Projects\DS3231\Src\main.c"</A1>
-        <Count>2</Count>
-        <SuppressDialog>1</SuppressDialog>
-    </Aliases>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -132,4 +120,16 @@
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints2>
+        <Count>0</Count>
+    </Breakpoints2>
+    <Aliases>
+        <A0>_ "E:\GitHub\workspace\STM32F1\Projects\MPU6050.Gen\Test\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c" "E:\workspace\STM32F1\Projects\MPU6050\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c"</A0>
+        <A1>_ "E:\GitHub\workspace\STM32F1\Projects\MPU6050.Gen\Test\Src\main.c" "E:\GitHub\workspace\STM32F1\Projects\DS3231\Src\main.c"</A1>
+        <Count>2</Count>
+        <SuppressDialog>1</SuppressDialog>
+    </Aliases>
 </settings>
