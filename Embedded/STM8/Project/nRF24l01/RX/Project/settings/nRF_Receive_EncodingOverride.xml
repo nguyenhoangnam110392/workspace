@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<userOverrides>
+  <override>
+    <path>D:\STM8\Project\nRF24l01\RX\User\main.c</path>
+    <encoding>System</encoding>
+  </override>
+  <override>
+    <path>D:\STM8\Project\nRF24l01\RX\User\nRF24L01.c</path>
+    <encoding>System</encoding>
+  </override>
+  <override>
+    <path>D:\STM8\Project\nRF24l01\RX\User\nRF24L01.h</path>
+    <encoding>System</encoding>
+  </override>
+</userOverrides>
+
+
