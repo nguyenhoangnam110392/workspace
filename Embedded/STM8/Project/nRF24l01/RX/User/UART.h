@@ -5,13 +5,13 @@
 #include "lt_stm8s_macro.h"
 
 void Init(void);
-u8 getData(void);
-void sendData(u8 data);
+uint8_t getData(void);
+void sendData(uint8_t data);
 
 static struct{
 	void (*Init)(void);
-	u8 (*getData)(void);
-	void (*sendData)(u8 data);
+	uint8_t (*getData)(void);
+	void (*sendData)(uint8_t data);
 } UART = 
 {
   Init,

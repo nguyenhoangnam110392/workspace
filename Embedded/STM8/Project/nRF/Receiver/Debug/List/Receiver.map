@@ -1,0 +1,376 @@
+###############################################################################
+#
+# IAR ELF Linker V3.10.1.201 for STM8                     12/Jan/2018  01:07:26
+# Copyright 2010-2017 IAR Systems AB.
+#
+#    Output file  =  
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Exe\Receiver.out
+#    Map file     =  
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\List\Receiver.map
+#    Command line =  
+#        -f C:\Users\one\AppData\Local\Temp\EW35E6.tmp
+#        (E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj\main.o
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj\nRF24L01.o
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj\stm8s_clk.o
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj\stm8s_gpio.o
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj\stm8s_it.o
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj\stm8s_spi.o
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb -o
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Exe\Receiver.out
+#        --map
+#        E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\List\Receiver.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\stm8\config\lnkstm8s103f3.icf" --config_def _CSTACK_SIZE=0x100
+#        --config_def _HEAP_SIZE=0x100 --entry __iar_program_start --debug_lib)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+__SystemLibrary            = DLib
+__code_model               = small
+__core                     = stm8
+__data_model               = medium
+__dlib_file_descriptor     = 0
+__dlib_full_locale_support = 0
+__rt_version               = 4
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at start of [0x000000-0x0000ff] { rw section .vregs };
+"A1":  place at end of [0x000000-0x0003ff] { block CSTACK };
+"P2":  place in [from 0x000000 to 0x0003ff] {
+          block HEAP, rw section __DLIB_PERTHREAD, rw section .far.bss,
+          rw section .far.data, rw section .far.noinit,
+          rw section .far_func.textrw, rw section .huge.bss,
+          rw section .huge.data, rw section .huge.noinit,
+          rw section .huge_func.textrw, rw section .iar.dynexit,
+          rw section .near.bss, rw section .near.data, rw section .near.noinit,
+          rw section .near_func.textrw };
+"A2":  place at start of [0x008000-0x009fff] { block INTVEC };
+"P3":  place in [from 0x008000 to 0x009fff] {
+          ro section __DLIB_PERTHREAD_init, ro section .far.data_init,
+          ro section .far_func.textrw_init, ro section .huge.data_init,
+          ro section .huge_func.textrw_init, ro section .iar.init_table,
+          ro section .init_array, ro section .near.data_init,
+          ro section .near.rodata, ro section .near_func.text,
+          ro section .near_func.textrw_init, ro section .tiny.data_init,
+          ro section .tiny.rodata_init };
+"P4":  place in [from 0x008000 to 0x009fff] {
+          ro section .far.rodata, ro section .far_func.text };
+"P5":  place in [from 0x008000 to 0x009fff] {
+          ro section .huge.rodata, ro section .huge_func.text };
+do not initialize {
+   rw section .eeprom.noinit, rw section .far.noinit, rw section .huge.noinit,
+   rw section .near.noinit, rw section .tiny.noinit, rw section .vregs };
+initialize by copy {
+   rw section .far.bss, rw section .far.data, rw section .far_func.textrw,
+   rw section .huge.bss, rw section .huge.data, rw section .huge_func.textrw,
+   rw section .iar.dynexit, rw section .near.bss, rw section .near.data,
+   rw section .near_func.textrw, rw section .tiny.bss, rw section .tiny.data,
+   ro section .tiny.rodata };
+
+  Section            Kind      Address   Size  Object
+  -------            ----      -------   ----  ------
+"A0":                                    0x10
+  .vregs             uninit   0x000000   0x10  vregs.o [4]
+                            - 0x000010   0x10
+
+"P2":                                    0x25
+  P2-1                        0x000010   0x25  <Init block>
+    .near.data       inited   0x000010    0x5  nRF24L01.o [1]
+    .near.bss        inited   0x000015   0x20  main.o [1]
+                            - 0x000035   0x25
+
+"A1":                                   0x100
+  CSTACK                      0x000300  0x100  <Block>
+    CSTACK           uninit   0x000300  0x100  <Block tail>
+                            - 0x000400  0x100
+
+"A2":                                    0x80
+  INTVEC                      0x008000   0x80  <Block>
+    .intvec          const    0x008000   0x80  interrupt.o [4]
+                            - 0x008080   0x80
+
+"P3-P5":                                0x86d
+  .near_func.text    ro code  0x008080  0x1a8  nRF24L01.o [1]
+  .near_func.text    ro code  0x008228   0xe4  stm8s_spi.o [1]
+  .near_func.text    ro code  0x00830c   0xe3  stm8s_clk.o [1]
+  .near_func.text    ro code  0x0083ef   0xb1  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x0084a0   0x8a  vreg_util.o [4]
+  .near.rodata       const    0x00852a   0x61  stm8s_gpio.o [1]
+  .near.rodata       const    0x00858b   0x60  stm8s_clk.o [1]
+  .near.rodata       const    0x0085eb   0x60  stm8s_spi.o [1]
+  .near_func.text    ro code  0x00864b   0x5e  stm8s_clk.o [1]
+  .near_func.text    ro code  0x0086a9   0x4a  main.o [1]
+  .near_func.text    ro code  0x0086f3   0x3a  stm8s_spi.o [1]
+  .near_func.text    ro code  0x00872d   0x38  nRF24L01.o [1]
+  .near_func.text    ro code  0x008765   0x36  stm8s_clk.o [1]
+  .near_func.text    ro code  0x00879b   0x28  init_small.o [4]
+  Initializer bytes  const    0x0087c3   0x25  <for P2-1>
+  .iar.init_table    const    0x0087e8    0xa  - Linker created -
+  .near_func.text    ro code  0x0087f2   0x17  main.o [1]
+  .near_func.text    ro code  0x008809   0x16  stm8s_spi.o [1]
+  .near_func.text    ro code  0x00881f   0x15  stm8s_spi.o [1]
+  .near_func.text    ro code  0x008834   0x14  init.o [4]
+  .near_func.text    ro code  0x008848   0x14  __dbg_xxexit.o [3]
+  .near_func.text    ro code  0x00885c   0x13  cstartup.o [4]
+  .near_func.text    ro code  0x00886f    0xb  stm8s_clk.o [1]
+  .near_func.text    ro code  0x00887a    0xb  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x008885    0xb  stm8s_spi.o [1]
+  .near_func.text    ro code  0x008890    0xa  nRF24L01.o [1]
+  .near_func.text    ro code  0x00889a    0x9  stm8s_clk.o [1]
+  .near_func.text    ro code  0x0088a3    0x8  nRF24L01.o [1]
+  .near_func.text    ro code  0x0088ab    0x7  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x0088b2    0x7  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x0088b9    0x5  cexit.o [4]
+  .near_func.text    ro code  0x0088be    0x4  stm8s_gpio.o [1]
+  .near_func.text    ro code  0x0088c2    0x4  stm8s_spi.o [1]
+  .near_func.text    ro code  0x0088c6    0x4  stm8s_spi.o [1]
+  .near_func.text    ro code  0x0088ca    0x3  interrupt.o [4]
+  .near_func.text    ro code  0x0088cd    0x3  low_level_init.o [4]
+  .near_func.text    ro code  0x0088d0    0x3  exit.o [4]
+  .near_func.text    ro code  0x0088d3    0x3  unhandled_exception.o [4]
+  .near_func.text    ro code  0x0088d6    0x2  main.o [1]
+  .near_func.text    ro code  0x0088d8    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088d9    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088da    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088db    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088dc    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088dd    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088de    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088df    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e0    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e1    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e2    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e3    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e4    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e5    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e6    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e7    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e8    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088e9    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088ea    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088eb    0x1  stm8s_it.o [1]
+  .near_func.text    ro code  0x0088ec    0x1  __dbg_break.o [3]
+                            - 0x0088ed  0x86d
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address   Size
+          -------   ----
+Copy (__iar_copy_init2)
+    1 source range, total size 0x25:
+          0x0087c3  0x25
+    1 destination range, total size 0x25:
+          0x000010  0x25
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  ro data  rw data
+    ------                 -------  -------  -------
+E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj: [1]
+    main.o                      99       32       32
+    nRF24L01.o                 498        5        5
+    stm8s_clk.o                395       96
+    stm8s_gpio.o               206       97
+    stm8s_it.o                  20
+    stm8s_spi.o                348       96
+    ------------------------------------------------
+    Total:                   1 566      326       37
+
+command line: [2]
+    ------------------------------------------------
+    Total:
+
+dbgstm8smd.a: [3]
+    __dbg_break.o                1
+    __dbg_xxexit.o              20
+    ------------------------------------------------
+    Total:                      21
+
+dlstm8smn.a: [4]
+    cexit.o                      5
+    cstartup.o                  19
+    exit.o                       3
+    init.o                      20
+    init_small.o                40
+    interrupt.o                  3      128
+    low_level_init.o             3
+    unhandled_exception.o        3
+    vreg_util.o                138
+    vregs.o                                       16
+    ------------------------------------------------
+    Total:                     234      128       16
+
+    Linker created                       10      256
+----------------------------------------------------
+    Grand Total:             1 821      464      309
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                    Address  Size  Type      Object
+-----                    -------  ----  ----      ------
+.iar.init_table$$Base   0x0087e8         --   Gb  - Linker created -
+.iar.init_table$$Limit  0x0087f2         --   Gb  - Linker created -
+?b0                     0x000000        Data  Gb  vregs.o [4]
+?b1                     0x000001        Data  Gb  vregs.o [4]
+?b10                    0x00000a        Data  Gb  vregs.o [4]
+?b11                    0x00000b        Data  Gb  vregs.o [4]
+?b12                    0x00000c        Data  Gb  vregs.o [4]
+?b13                    0x00000d        Data  Gb  vregs.o [4]
+?b14                    0x00000e        Data  Gb  vregs.o [4]
+?b15                    0x00000f        Data  Gb  vregs.o [4]
+?b2                     0x000002        Data  Gb  vregs.o [4]
+?b3                     0x000003        Data  Gb  vregs.o [4]
+?b4                     0x000004        Data  Gb  vregs.o [4]
+?b5                     0x000005        Data  Gb  vregs.o [4]
+?b6                     0x000006        Data  Gb  vregs.o [4]
+?b7                     0x000007        Data  Gb  vregs.o [4]
+?b8                     0x000008        Data  Gb  vregs.o [4]
+?b9                     0x000009        Data  Gb  vregs.o [4]
+?e0                     0x000001        Data  Gb  vregs.o [4]
+?e1                     0x000005        Data  Gb  vregs.o [4]
+?e2                     0x000009        Data  Gb  vregs.o [4]
+?e3                     0x00000d        Data  Gb  vregs.o [4]
+?epilogue_l2            0x00851b        Code  Gb  vreg_util.o [4]
+?epilogue_l2_l3         0x008518        Code  Gb  vreg_util.o [4]
+?epilogue_l2_w6         0x00851f        Code  Gb  vreg_util.o [4]
+?epilogue_w4            0x008526        Code  Gb  vreg_util.o [4]
+?l0                     0x000000        Data  Gb  vregs.o [4]
+?l1                     0x000004        Data  Gb  vregs.o [4]
+?l2                     0x000008        Data  Gb  vregs.o [4]
+?l3                     0x00000c        Data  Gb  vregs.o [4]
+?pop_l2                 0x0084fa        Code  Gb  vreg_util.o [4]
+?pop_l3                 0x008505        Code  Gb  vreg_util.o [4]
+?pop_w4                 0x0084bd        Code  Gb  vreg_util.o [4]
+?pop_w6                 0x0084c4        Code  Gb  vreg_util.o [4]
+?push_l2                0x0084d3        Code  Gb  vreg_util.o [4]
+?push_l3                0x0084d8        Code  Gb  vreg_util.o [4]
+?push_w4                0x0084a0        Code  Gb  vreg_util.o [4]
+?push_w6                0x0084a5        Code  Gb  vreg_util.o [4]
+?w0                     0x000000        Data  Gb  vregs.o [4]
+?w1                     0x000002        Data  Gb  vregs.o [4]
+?w2                     0x000004        Data  Gb  vregs.o [4]
+?w3                     0x000006        Data  Gb  vregs.o [4]
+?w4                     0x000008        Data  Gb  vregs.o [4]
+?w5                     0x00000a        Data  Gb  vregs.o [4]
+?w6                     0x00000c        Data  Gb  vregs.o [4]
+?w7                     0x00000e        Data  Gb  vregs.o [4]
+ADC1_IRQHandler         0x0088e9   0x1  Code  Gb  stm8s_it.o [1]
+AWU_IRQHandler          0x0088da   0x1  Code  Gb  stm8s_it.o [1]
+CLK_ClockSwitchConfig   0x00830c  0xe3  Code  Gb  stm8s_clk.o [1]
+CLK_DeInit              0x008765  0x36  Code  Gb  stm8s_clk.o [1]
+CLK_IRQHandler          0x0088db   0x1  Code  Gb  stm8s_it.o [1]
+CLK_SYSCLKConfig        0x00864b  0x5e  Code  Gb  stm8s_clk.o [1]
+CSN                     0x00809b   0xf  Code  Lc  nRF24L01.o [1]
+CSTACK$$Base            0x000300         --   Gb  - Linker created -
+CSTACK$$Limit           0x000400         --   Gb  - Linker created -
+EEPROM_EEC_IRQHandler   0x0088eb   0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTA_IRQHandler   0x0088dc   0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTB_IRQHandler   0x0088dd   0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTC_IRQHandler   0x0088de   0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTD_IRQHandler   0x0088df   0x1  Code  Gb  stm8s_it.o [1]
+EXTI_PORTE_IRQHandler   0x0088e0   0x1  Code  Gb  stm8s_it.o [1]
+GPIO_Init               0x0083ef  0xb1  Code  Gb  stm8s_gpio.o [1]
+GPIO_WriteHigh          0x0088ab   0x7  Code  Gb  stm8s_gpio.o [1]
+GPIO_WriteLow           0x0088be   0x4  Code  Gb  stm8s_gpio.o [1]
+GPIO_WriteReverse       0x0088b2   0x7  Code  Gb  stm8s_gpio.o [1]
+I2C_IRQHandler          0x0088e8   0x1  Code  Gb  stm8s_it.o [1]
+INTVEC$$Base            0x008000         --   Gb  - Linker created -
+INTVEC$$Limit           0x008080         --   Gb  - Linker created -
+Region$$Table$$Base     0x0087e8         --   Gb  - Linker created -
+Region$$Table$$Limit    0x0087f2         --   Gb  - Linker created -
+SPI_Cmd                 0x008809  0x16  Code  Gb  stm8s_spi.o [1]
+SPI_DeInit              0x00881f  0x15  Code  Gb  stm8s_spi.o [1]
+SPI_GetFlagStatus       0x0086f3  0x3a  Code  Gb  stm8s_spi.o [1]
+SPI_IRQHandler          0x0088e1   0x1  Code  Gb  stm8s_it.o [1]
+SPI_Init                0x008228  0xe4  Code  Gb  stm8s_spi.o [1]
+SPI_ReceiveData         0x0088c6   0x4  Code  Gb  stm8s_spi.o [1]
+SPI_SendData            0x0088c2   0x4  Code  Gb  stm8s_spi.o [1]
+TIM1_CAP_COM_IRQHandler
+                        0x0088e3   0x1  Code  Gb  stm8s_it.o [1]
+TIM1_UPD_OVF_TRG_BRK_IRQHandler
+                        0x0088e2   0x1  Code  Gb  stm8s_it.o [1]
+TIM2_CAP_COM_IRQHandler
+                        0x0088e5   0x1  Code  Gb  stm8s_it.o [1]
+TIM2_UPD_OVF_BRK_IRQHandler
+                        0x0088e4   0x1  Code  Gb  stm8s_it.o [1]
+TIM4_UPD_OVF_IRQHandler
+                        0x0088ea   0x1  Code  Gb  stm8s_it.o [1]
+TLI_IRQHandler          0x0088d9   0x1  Code  Gb  stm8s_it.o [1]
+TRAP_IRQHandler         0x0088d8   0x1  Code  Gb  stm8s_it.o [1]
+TX_ADDRESS              0x000010   0x5  Data  Gb  nRF24L01.o [1]
+UART1_RX_IRQHandler     0x0088e7   0x1  Code  Gb  stm8s_it.o [1]
+UART1_TX_IRQHandler     0x0088e6   0x1  Code  Gb  stm8s_it.o [1]
+__DebugBreak            0x0088ec   0x1  Code  Gb  __dbg_break.o [3]
+__exit                  0x008848  0x14  Code  Gb  __dbg_xxexit.o [3]
+__iar_copy_init2        0x00879b        Code  Gb  init_small.o [4]
+__iar_data_init2        0x008834  0x14  Code  Gb  init.o [4]
+__iar_program_start     0x00885c        Code  Gb  cstartup.o [4]
+__iar_unhandled_exception
+                        0x0088d3        Code  Gb  unhandled_exception.o [4]
+__intvec                0x008000        Data  Gb  interrupt.o [4]
+__low_level_init        0x0088cd   0x3  Code  Gb  low_level_init.o [4]
+_exit                   0x0088b9        Code  Gb  cexit.o [4]
+_interrupt_1            0x0088d8        Code  Gb  stm8s_it.o [1]
+_interrupt_12           0x0088e1        Code  Gb  stm8s_it.o [1]
+_interrupt_13           0x0088e2        Code  Gb  stm8s_it.o [1]
+_interrupt_14           0x0088e3        Code  Gb  stm8s_it.o [1]
+_interrupt_15           0x0088e4        Code  Gb  stm8s_it.o [1]
+_interrupt_16           0x0088e5        Code  Gb  stm8s_it.o [1]
+_interrupt_19           0x0088e6        Code  Gb  stm8s_it.o [1]
+_interrupt_2            0x0088d9        Code  Gb  stm8s_it.o [1]
+_interrupt_20           0x0088e7        Code  Gb  stm8s_it.o [1]
+_interrupt_21           0x0088e8        Code  Gb  stm8s_it.o [1]
+_interrupt_24           0x0088e9        Code  Gb  stm8s_it.o [1]
+_interrupt_25           0x0088ea        Code  Gb  stm8s_it.o [1]
+_interrupt_26           0x0088eb        Code  Gb  stm8s_it.o [1]
+_interrupt_3            0x0088da        Code  Gb  stm8s_it.o [1]
+_interrupt_4            0x0088db        Code  Gb  stm8s_it.o [1]
+_interrupt_5            0x0088dc        Code  Gb  stm8s_it.o [1]
+_interrupt_6            0x0088dd        Code  Gb  stm8s_it.o [1]
+_interrupt_7            0x0088de        Code  Gb  stm8s_it.o [1]
+_interrupt_8            0x0088df        Code  Gb  stm8s_it.o [1]
+_interrupt_9            0x0088e0        Code  Gb  stm8s_it.o [1]
+assert_failed           0x0088d6   0x2  Code  Gb  main.o [1]
+data                    0x000015  0x20  Data  Gb  main.o [1]
+delay_us                0x0087f2  0x17  Code  Gb  main.o [1]
+exit                    0x0088d0   0x3  Code  Gb  exit.o [4]
+main                    0x0086a9  0x4a  Code  Gb  main.o [1]
+nRF24L01_Pin_Config     0x00872d  0x38  Code  Gb  nRF24L01.o [1]
+nRF24L01_Read_Reg       0x008156  0x17  Code  Lc  nRF24L01.o [1]
+nRF24L01_Read_RxData    0x008115  0x3d  Code  Lc  nRF24L01.o [1]
+nRF24L01_RevData        0x0081de  0x28  Code  Gb  nRF24L01.o [1]
+nRF24L01_SPI_RW         0x008080  0x1b  Code  Lc  nRF24L01.o [1]
+nRF24L01_Set_RxMode     0x00817d  0x22  Code  Gb  nRF24L01.o [1]
+nRF24L01_Write_Reg      0x0080b0  0x17  Code  Lc  nRF24L01.o [1]
+nRF24L01_Write_TxData   0x0080c7  0x46  Code  Lc  nRF24L01.o [1]
+
+
+[1] = E:\workspace\Embedded\STM8\Project\nRF\Receiver\Debug\Obj
+[2] = command line
+[3] = dbgstm8smd.a
+[4] = dlstm8smn.a
+
+  1 821 bytes of readonly  code memory
+    464 bytes of readonly  data memory
+    309 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

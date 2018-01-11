@@ -1,19 +1,12 @@
 #include "nRF24L01.h"
 
-u8 TX_ADDRESS[TX_ADR_WIDTH] = {0x34,0x43,0x10,0x10,0x01};  
-u8 RX_ADDRESS[RX_ADR_WIDTH] = {0x34,0x43,0x10,0x10, 0x01};  
+uint8_t TX_ADDRESS[TX_ADR_WIDTH] = {0x34,0x43,0x10,0x10,0x01};  
+uint8_t RX_ADDRESS[RX_ADR_WIDTH] = {0x34,0x43,0x10,0x10,0x01};
 
-u8 TxBuf[32]={
-  0x01,0x02,0x03,0x4,0x05,0x06,0x07,0x08,
-  0x09,0x10,0x11,0x12,0x13,0x14,0x15,0x16,
-  0x17,0x18,0x19,0x20,0x21,0x22,0x23,0x24,
-  0x25,0x26,0x27,0x28,0x29,0x30,0x31,0x32
-};
+uint8_t sta;
 
-u8 sta;
-
-void delay_us(u16 x){  // 16NOP = 1us
-  u16 i;
+void delay_us(uint16_t x){
+  uint16_t i;
   for(i=0;i < x;i++){
     asm("nop"); asm("nop"); asm("nop"); asm("nop");  
     asm("nop"); asm("nop"); asm("nop"); asm("nop"); 
@@ -22,17 +15,17 @@ void delay_us(u16 x){  // 16NOP = 1us
   }
 }
 
-void delay_ms(u16 x){ // not sure for the accurate time
-  u16 i,j;
+void delay_ms(uint16_t x){ 
+  uint16_t i,j;
   for(i=0;i < 110;i++)
     for(j=0;j < x;j++);
 }
 
 void nRF_Init(void){
   delay_us(1000);
-  CE=0;    // chip enable
-  CSN=1;   // Spi disable 
-  SCK=0;   // Spi clock line init high
+  CE = 0;    /* chip enable */
+  CSN = 1;   /* Spi disable */
+  SCK = 0;   /* Spi clock line init high */
   SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH);    
   SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH); 
   SPI_RW_Reg(WRITE_REG + EN_AA, 0x01);      
@@ -44,9 +37,38 @@ void nRF_Init(void){
   delay_ms(2);
 }
 
-u8 SPI_RW(u8 byte){       
-  u8 i;
-  for(i=0;i < 8;i++){
+void SetRX_Mode(void){
+  CE = 1; 
+  delay_ms(1); 
+}
+/**************************************************/
+
+uint8_t nrf_read(uint8_t* rx_buf){
+  uint8_t revale=0;
+  sta = SPI_Read(STATUS);	
+  if(RX_DR){
+    CE = 0; 			
+    SPI_Read_Buf(RD_RX_PLOAD, rx_buf,TX_PLOAD_WIDTH);/* read receive payload from RX_FIFO buffer */
+    revale =1;			
+  }
+  SPI_RW_Reg(WRITE_REG+STATUS,sta);   
+  return revale;
+}
+/**********************************************************************************************************/
+void nrf_send(uint8_t* tx_buf){
+  CE=0;			                                         	
+  SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH); 
+  SPI_Write_Buf(WR_TX_PLOAD, tx_buf, TX_PLOAD_WIDTH); 		 
+  SPI_RW_Reg(WRITE_REG + CONFIG, 0x0e);       
+  CE = 1;		                            
+  delay_us(1000);     
+  CE = 0;                                     
+}
+
+/**********************************************************************************************************/
+uint8_t SPI_RW(uint8_t byte){       
+  uint8_t i;
+  for(i = 0;i < 8;i++){
     if((byte & 0x80) == 0){       
       MOSI = 0;       
     }
@@ -68,8 +90,8 @@ u8 SPI_RW(u8 byte){
   return (byte);    
 }
 /***************************************************/
-u8 SPI_RW_Reg(u8 reg, u8 value){
-  u8 status;
+uint8_t SPI_RW_Reg(uint8_t reg, uint8_t value){
+  uint8_t status;
   CSN = 0;                   
   status = SPI_RW(reg);      
   SPI_RW(value);             
@@ -77,8 +99,8 @@ u8 SPI_RW_Reg(u8 reg, u8 value){
   return(status);            
 }
 /**************************************************/
-u8 SPI_Read(u8 reg){
-  u8 reg_val;
+uint8_t SPI_Read(uint8_t reg){
+  uint8_t reg_val;
   CSN = 0;                    
   SPI_RW(reg);                
   reg_val = SPI_RW(0);        
@@ -86,8 +108,8 @@ u8 SPI_Read(u8 reg){
   return(reg_val);            
 }
 
-u8 SPI_Read_Buf(u8 reg, u8* pBuf, u8 bytes){
-  u8 status, i;
+uint8_t SPI_Read_Buf(uint8_t reg, uint8_t* pBuf, uint8_t bytes){
+  uint8_t status, i;
   CSN = 0;                    
   status = SPI_RW(reg);      
   for(i=0; i<bytes; i++)
@@ -96,43 +118,14 @@ u8 SPI_Read_Buf(u8 reg, u8* pBuf, u8 bytes){
   return(status);             
 }
 /**************************************************/
-u8 SPI_Write_Buf(u8 reg, u8 *pBuf, u8 bytes)
+uint8_t SPI_Write_Buf(uint8_t reg, uint8_t *pBuf, uint8_t bytes)
 {
-  u8 status, i;
+  uint8_t status, i;
   CSN = 0;                    
   status = SPI_RW(reg);       
-  delay_us(10);
   for(i=0; i<bytes; i++)
   SPI_RW(*pBuf++);        
   CSN = 1;                    
   return(status);             
 }
 /**************************************************/
-
-void SetRX_Mode(void){
-  CE = 1; 
-  delay_us(1000); 
-}
-/**************************************************/
-
-u8 nrf_read(u8* rx_buf){
-  u8 revale=0;
-  sta = SPI_Read(STATUS);	
-  if(RX_DR){
-    CE = 0; 			
-    SPI_Read_Buf(RD_RX_PLOAD, rx_buf,TX_PLOAD_WIDTH);// read receive payload from RX_FIFO buffer
-    revale =1;			
-  }
-  SPI_RW_Reg(WRITE_REG+STATUS,sta);   
-  return revale;
-}
-/**********************************************************************************************************/
-void nrf_send(u8* tx_buf){
-  CE=0;			                                         	
-  SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH); 
-  SPI_Write_Buf(WR_TX_PLOAD, tx_buf, TX_PLOAD_WIDTH); 		 
-  SPI_RW_Reg(WRITE_REG + CONFIG, 0x0e);       
-  CE = 1;		                            
-  delay_us(1000);     
-  CE = 0;                                     
-}

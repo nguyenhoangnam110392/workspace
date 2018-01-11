@@ -1,8 +1,8 @@
-"E:\workspace\STM8\Project\nRF24l01\RX\User\main.c"
+"E:\workspace\Embedded\STM8\Project\nRF24l01\RX\User\main.c"
 -std=c99
 -ferror-limit=0
 -I
-E:\workspace\STM8\Project\nRF24l01\RX\Project\..\User
+E:\workspace\Embedded\STM8\Project\nRF24l01\RX\Project\..\User
 -I
 D:\STM8\Project\nRF24l01\RX\User
 -I
@@ -10,7 +10,7 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc\c
 -I
-E:\workspace\STM8\Project\nRF24l01\RX\User
+E:\workspace\Embedded\STM8\Project\nRF24l01\RX\User
 -I
 D:\STM8\Project\nRF24l01\RX\User
 -D__CHAR_BITS__=8

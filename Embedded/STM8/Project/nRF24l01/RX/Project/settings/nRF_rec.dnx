@@ -12,7 +12,7 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <DebugChecksum>
-        <Checksum>2644235617</Checksum>
+        <Checksum>672550885</Checksum>
     </DebugChecksum>
     <CallStack>
         <ShowArgs>0</ShowArgs>
@@ -79,10 +79,6 @@
         <GraphEnabled>0</GraphEnabled>
         <ShowTimeLog>1</ShowTimeLog>
     </DataSample>
-    <Breakpoints>
-        <Bp0>_ "STD_CODE" "0x0080C9" 0 0 0 0 "" 0 ""</Bp0>
-        <Count>1</Count>
-    </Breakpoints>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -92,11 +88,16 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
+    <Breakpoints>
+        <Bp0>_ "STD_CODE" "0x0080C9" 0 0 0 0 "" 0 ""</Bp0>
+        <Count>1</Count>
+    </Breakpoints>
     <Aliases>
         <A0>_ "D:\STM8S\RX\User\main.c" ""</A0>
         <A1>_ "D:\STM8S\RX\User\nRF24L01.c" ""</A1>
-        <Count>2</Count>
-        <SuppressDialog>0</SuppressDialog>
+        <A2>_ "E:\workspace\STM8\Project\nRF24l01\RX\User\main.c" "E:\workspace\Embedded\STM8\Project\nRF24l01\RX\User\main.c"</A2>
+        <Count>3</Count>
+        <SuppressDialog>1</SuppressDialog>
     </Aliases>
     <DebuggerSettings>
         <DisableInterruptsWhenStepping>0</DisableInterruptsWhenStepping>
