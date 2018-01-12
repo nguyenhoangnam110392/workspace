@@ -23,7 +23,6 @@ static uint8_t nRF24L01_SPI_RW(uint8_t data);
 static void nRF24L01_SPI_WAIT(void);
 static void CE(uint8_t state);
 static void CSN(uint8_t state);
-static void SCK(uint8_t state);
 
 /*******************************************************************************
  * Name: NRF24L01_Pin_Config
@@ -38,8 +37,8 @@ void nRF24L01_Pin_Config(void)
   /* Initialize SPI - high first, 6M, main mode, SCK idle low, the first edge 
    * of the data acquisition */
   SPI_Init(SPI_FIRSTBIT_MSB, SPI_BAUDRATEPRESCALER_4, SPI_MODE_MASTER,\
-                                 SPI_CLOCKPOLARITY_LOW, SPI_CLOCKPHASE_1EDGE, \
-                       SPI_DATADIRECTION_2LINES_FULLDUPLEX, SPI_NSS_SOFT, 0x07);
+                         SPI_CLOCKPOLARITY_LOW, SPI_CLOCKPHASE_1EDGE, \
+               SPI_DATADIRECTION_2LINES_FULLDUPLEX, SPI_NSS_SOFT, 0x07);
   
   SPI_Cmd(ENABLE);  /* Enable SPI */
   
@@ -86,6 +85,39 @@ void nRF24L01_Set_TxMode(void)
 }
 
 /*******************************************************************************
+ * Name: nRF24L01_Set_RxMode
+ * Function: Set nRF24L01TX FIFO to receive mode
+ * Parameter: None
+ * Returns: None
+ * Description: None
+ ******************************************************************************/
+void nRF24L01_Set_RxMode(void)
+{
+  CE(0); 
+  /* Receive Device Receive Channel 0 uses the same transmit address as the 
+   * transmit device */
+  nRF24L01_Write_TxData(W_REGISTER+RX_ADDR_P0, TX_ADDRESS, TX_ADDR_WITDH);  
+  
+  /******The following register configuration**************/
+  /* Enable Receive Channel 0 Auto Answer */
+  nRF24L01_Write_Reg(W_REGISTER+EN_AA,0x01);
+  /* Enable receive channel 0 */
+  nRF24L01_Write_Reg(W_REGISTER+EN_RXADDR,0x01);
+  /* Select RF channel 0x40 */
+  nRF24L01_Write_Reg(W_REGISTER+RF_CH,0x40);
+  /* Receive Channel 0 Selects the same valid data width as the transmit channel */
+  nRF24L01_Write_Reg(W_REGISTER+RX_PW_P0,TX_DATA_WITDH);
+  /* Data transfer rate 1Mbps, transmit power 0dBm, low noise amplifier gain */
+  nRF24L01_Write_Reg(W_REGISTER+RF_SETUP,0x07);
+  /* CRC enable, 16-bit CRC check, power-on */
+  nRF24L01_Write_Reg(W_REGISTER+CONFIG,0x0f);
+
+  CE(1);
+  /*Follow the chip manual for more than 10us seconds */
+  delay_us(20); 
+}
+
+/*******************************************************************************
  * Name: nRF24L01_SendData
  * Function: send data function
  * Parameter: data -> point to send data pointer
@@ -105,6 +137,43 @@ void nRF24L01_SendData(uint8_t *data)
 }
 
 /*******************************************************************************
+ * Name: nRF24L01_RevData
+ * Function: Receive data function
+ * Parameter: RevData -> point to store data buffer
+ * Returns: 1-- receiving data failed, 0- receiving data successfully
+ * Description: None
+ ******************************************************************************/
+uint8_t nRF24L01_RevData(uint8_t *RevData)
+{
+  uint8_t RevFlags = 1;
+  uint8_t sta;
+  /* Read the status register value */
+  sta = nRF24L01_Read_Reg(R_REGISTER+STATUS);
+
+  /* Determine whether to receive the data */
+  if(sta & 0x40)        
+  {
+    /* Chip standby */
+    CE(0);
+    /* 4-bit data read from RXFIFO */
+    nRF24L01_Read_RxData(R_RX_PAYLOAD,RevData,RX_DATA_WITDH);
+    
+    /* After receiving the data RX_DR, TX_DS, MAX_PT are set high to 1 by writing
+     * a clear interrupt flag */
+    nRF24L01_Write_Reg(W_REGISTER+STATUS,0xff); 
+    /* Enable working */
+    CSN(0);
+    /* Used to clear the FIFO */
+    nRF24L01_SPI_RW(FLUSH_RX);
+    /* Disable working */
+    CSN(1); 
+    RevFlags = 0;
+  }
+  
+  return(RevFlags);
+}
+
+/*******************************************************************************
  * Name: nRF24L01_Read_RxData
  * Function: Read the data function of nRF24L01RX FIFO
  * Parameter: RegAddr -> nRF24L01 register address
@@ -116,14 +185,14 @@ void nRF24L01_SendData(uint8_t *data)
 static uint8_t nRF24L01_Read_RxData(uint8_t RegAddr, uint8_t *RxData, uint8_t DataLen)
 { 
   uint8_t retVal, i;
-  
-  CSN(0);                 /* 启动时序 */
-  retVal = nRF24L01_SPI_RW(RegAddr);  /* 写入要读取的寄存器地址 */
-  for(i = 0; i < DataLen; i++)      /* 读取数据 */
+  /* Disable nRf24L01 from connecting to master chip */
+  CSN(0);
+  retVal = nRF24L01_SPI_RW(RegAddr);  /* Write to the register address to be read */
+  for(i = 0; i < DataLen; i++)        /* Read the data */
   {
     RxData[i] = nRF24L01_SPI_RW(0);
   } 
-  
+  /* Enable nRf24L01 from connecting to master chip */
   CSN(1);
   
   return retVal; 
@@ -143,8 +212,9 @@ static uint8_t nRF24L01_Write_TxData(uint8_t RegAddr,uint8_t *TxData,uint8_t Dat
   uint8_t retVal, i;
   
   CSN(0);
-  retVal = nRF24L01_SPI_RW(RegAddr);  /* 写入要写入寄存器的地址 */
-  for(i = 0; i < DataLen; i++)      /* 写入数据 */
+  /* Write the address to be written to the register */
+  retVal = nRF24L01_SPI_RW(RegAddr);
+  for(i = 0; i < DataLen; i++)        /* Write data */
   {
     nRF24L01_SPI_RW(*TxData++);
   }   
@@ -169,16 +239,16 @@ uint8_t nRRF24L01_CheckACK(void)
   /* Whether there is a send complete interrupt and repeat send interrupt */
   if((retVal & 0x20) || (retVal & 0x10))
   {
-     /* Clear TX_DS or MAX_RT interrupt flag */
-     nRF24L01_Write_Reg(W_REGISTER + STATUS, 0xff); 
-     CSN(0);
-     nRF24L01_SPI_RW(FLUSH_TX); /* Used to clear the FIFO */
-     CSN(1); 
-     return SPI_OK;
+    /* Clear TX_DS or MAX_RT interrupt flag */
+    nRF24L01_Write_Reg(W_REGISTER + STATUS, 0xff); 
+    CSN(0);
+    nRF24L01_SPI_RW(FLUSH_TX); /* Used to clear the FIFO */
+    CSN(1); 
+    return SPI_OK;
   }
   else
   {
-     return SPI_FAILED;
+    return SPI_FAILED;
   }
 }
 
@@ -191,14 +261,14 @@ uint8_t nRRF24L01_CheckACK(void)
  ******************************************************************************/
 static uint8_t nRF24L01_Read_Reg(uint8_t RegAddr)
 {
-   uint8_t retVal;
+  uint8_t retVal;
    
-   CSN(0);                          /* Start timing */
-   nRF24L01_SPI_RW(RegAddr);        /* Write register address */
-   retVal = nRF24L01_SPI_RW(0x00);  /* Write register read instruction */ 
-   CSN(1);
+  CSN(0);                          /* Start timing */
+  nRF24L01_SPI_RW(RegAddr);        /* Write register address */
+  retVal = nRF24L01_SPI_RW(0x00);  /* Write register read instruction */ 
+  CSN(1);
    
-   return retVal;                   /* Return status value */
+  return retVal;                   /* Return status value */
 }
 
 /*******************************************************************************
@@ -211,14 +281,14 @@ static uint8_t nRF24L01_Read_Reg(uint8_t RegAddr)
  ******************************************************************************/
 static uint8_t nRF24L01_Write_Reg(uint8_t RegAddr,uint8_t data)
 {
-   uint8_t retVal;
+  uint8_t retVal;
    
-   CSN(0);                              /* Start timing */
-   retVal = nRF24L01_SPI_RW(RegAddr);   /* Write address */
-   nRF24L01_SPI_RW(data);               /* Write value */
-   CSN(1);
+  CSN(0);                              /* Start timing */
+  retVal = nRF24L01_SPI_RW(RegAddr);   /* Write address */
+  nRF24L01_SPI_RW(data);               /* Write value */
+  CSN(1);
    
-   return retVal;
+  return retVal;
 }
 
 /*******************************************************************************

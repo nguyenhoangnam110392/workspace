@@ -1,15 +1,15 @@
 #include "main.h"
 
 static void CLK_Config(void);
+static void Port_Config(void);
+
 uint8_t data[32] = {0};
 
 void main(void){
   /* Initialize configuration */
   CLK_Config();
-
+  Port_Config();
   nRF24L01_Pin_Config(); 
-
-  GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_OUT_PP_LOW_FAST);
 
   while (1){
     nRF24L01_Set_RxMode();
@@ -17,7 +17,7 @@ void main(void){
     nRF24L01_RevData(data);
     
     /* Led blinking */
-    GPIO_WriteReverse(GPIOB, GPIO_PIN_5);
+    GPIO_WriteReverse(LED_PORT, LED_PIN);
     delay_ms(500);
   }
 }
@@ -30,6 +30,10 @@ static void CLK_Config(void){
     CLK_SYSCLKConfig(CLK_PRESCALER_HSIDIV1);
     /* Configure the system clock to use HSI (High Speed Internal) clock source and to run at 16Mhz */
     CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
+}
+
+static void Port_Config(void){
+  GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
 }
 
 void delay_us(uint16_t x)

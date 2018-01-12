@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.general.xcl" --backend -f "E:\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\GitHub\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.general.xcl" --backend -f "E:\GitHub\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\GitHub\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\GitHub\workspace\Embedded\STM8\Project\nRF\Master\settings\Master.Debug.driver.xcl" 
 }

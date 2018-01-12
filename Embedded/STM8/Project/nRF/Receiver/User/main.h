@@ -1,6 +1,7 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+#include "config.h"
 #include "stm8s.h"
 #include "nRF24L01.h"
 
