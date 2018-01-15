@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <Project>
     <WindowStorage>
         <ChildIdMap>
@@ -115,7 +115,7 @@
             <IarPane-34087>
                 <expressions>
                     <item>data</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

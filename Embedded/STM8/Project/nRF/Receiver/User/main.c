@@ -10,7 +10,8 @@ void main(void){
   CLK_Config();
   Port_Config();
   nRF24L01_Pin_Config(); 
-
+  
+  __enable_interrupt();
   while (1){
     nRF24L01_Set_RxMode();
 
