@@ -1,4 +1,4 @@
-"E:\GitHub\workspace\Embedded\STM8\Project\nRF\Master\User\main.c"
+"E:\workspace\Embedded\STM8\Project\nRF\Master\User\main.c"
 -std=c99
 -ferror-limit=0
 -I

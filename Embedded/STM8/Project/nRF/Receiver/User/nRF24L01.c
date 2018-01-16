@@ -76,8 +76,8 @@ void nRF24L01_Set_TxMode(void)
   nRF24L01_Write_Reg(W_REGISTER+RF_CH, 0x40);
   /* Data transfer rate 1Mbps, transmit power 0dBm, low noise amplifier gain */
   nRF24L01_Write_Reg(W_REGISTER+RF_SETUP, 0x07);
-  /* CRC enable, 16-bit CRC check, power-on */ 
-  nRF24L01_Write_Reg(W_REGISTER+CONFIG, 0x0e);
+  /* CRC enable, 16-bit CRC check, power-on, IRQ reflects when TX_DS send ok */ 
+  nRF24L01_Write_Reg(W_REGISTER+CONFIG, 0x5E);
   
   CE(1);
 
@@ -109,8 +109,8 @@ void nRF24L01_Set_RxMode(void)
   nRF24L01_Write_Reg(W_REGISTER+RX_PW_P0,TX_DATA_WITDH);
   /* Data transfer rate 1Mbps, transmit power 0dBm, low noise amplifier gain */
   nRF24L01_Write_Reg(W_REGISTER+RF_SETUP,0x07);
-  /* CRC enable, 16-bit CRC check, power-on */
-  nRF24L01_Write_Reg(W_REGISTER+CONFIG,0x0f);
+  /* CRC enable, 16-bit CRC check, power-on, IRQ reflects when receive data RX_DR */
+  nRF24L01_Write_Reg(W_REGISTER+CONFIG,0x3f);
 
   CE(1);
   /*Follow the chip manual for more than 10us seconds */
@@ -160,7 +160,7 @@ uint8_t nRF24L01_RevData(uint8_t *RevData)
     
     /* After receiving the data RX_DR, TX_DS, MAX_PT are set high to 1 by writing
      * a clear interrupt flag */
-    nRF24L01_Write_Reg(W_REGISTER+STATUS,0xff); 
+    nRF24L01_Write_Reg(W_REGISTER+STATUS, 0xff); 
     /* Enable working */
     CSN(0);
     /* Used to clear the FIFO */
@@ -168,6 +168,7 @@ uint8_t nRF24L01_RevData(uint8_t *RevData)
     /* Disable working */
     CSN(1); 
     RevFlags = 0;
+    CE(1);
   }
   
   return(RevFlags);
@@ -221,35 +222,6 @@ static uint8_t nRF24L01_Write_TxData(uint8_t RegAddr,uint8_t *TxData,uint8_t Dat
   
   CSN(1);
   return retVal ;
-}
-
-/*******************************************************************************
- * Name: nRRF24L01_CheckACK
- * Function: Detect sending success and clear flag function
- * Parameter: 0 - sent successfully, 1- - failed to send
- * Returns: None
- * Description:
- ******************************************************************************/
-uint8_t nRRF24L01_CheckACK(void)
-{  
-  uint8_t retVal;
-  
-  /* Read status register value after sending */
-  retVal = nRF24L01_Read_Reg(R_REGISTER + STATUS);   
-  /* Whether there is a send complete interrupt and repeat send interrupt */
-  if((retVal & 0x20) || (retVal & 0x10))
-  {
-    /* Clear TX_DS or MAX_RT interrupt flag */
-    nRF24L01_Write_Reg(W_REGISTER + STATUS, 0xff); 
-    CSN(0);
-    nRF24L01_SPI_RW(FLUSH_TX); /* Used to clear the FIFO */
-    CSN(1); 
-    return SPI_OK;
-  }
-  else
-  {
-    return SPI_FAILED;
-  }
 }
 
 /*******************************************************************************

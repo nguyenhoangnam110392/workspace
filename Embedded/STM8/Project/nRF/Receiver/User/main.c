@@ -11,15 +11,12 @@ void main(void){
   Port_Config();
   nRF24L01_Pin_Config(); 
   
-  __enable_interrupt();
+  EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOB, EXTI_SENSITIVITY_FALL_ONLY);
+  enableInterrupts();
+  nRF24L01_Set_RxMode();
   while (1){
-    nRF24L01_Set_RxMode();
-
     nRF24L01_RevData(data);
-    
-    /* Led blinking */
-    GPIO_WriteReverse(LED_PORT, LED_PIN);
-    delay_ms(500);
+    halt();
   }
 }
 
@@ -34,7 +31,8 @@ static void CLK_Config(void){
 }
 
 static void Port_Config(void){
-  GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
+  GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_OUT_PP_LOW_FAST);
+  GPIO_Init(GPIOB, GPIO_PIN_4, GPIO_MODE_IN_PU_IT);
 }
 
 void delay_us(uint16_t x)
