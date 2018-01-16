@@ -76,8 +76,8 @@ void nRF24L01_Set_TxMode(void)
   nRF24L01_Write_Reg(W_REGISTER+RF_CH, 0x40);
   /* Data transfer rate 1Mbps, transmit power 0dBm, low noise amplifier gain */
   nRF24L01_Write_Reg(W_REGISTER+RF_SETUP, 0x07);
-  /* CRC enable, 16-bit CRC check, power-on */ 
-  nRF24L01_Write_Reg(W_REGISTER+CONFIG, 0x0e);
+  /* CRC enable, 16-bit CRC check, power-on, IRQ reflects when TX_DS send ok */ 
+  nRF24L01_Write_Reg(W_REGISTER+CONFIG, 0x5E);
   
   CE(1);
 
@@ -109,8 +109,8 @@ void nRF24L01_Set_RxMode(void)
   nRF24L01_Write_Reg(W_REGISTER+RX_PW_P0,TX_DATA_WITDH);
   /* Data transfer rate 1Mbps, transmit power 0dBm, low noise amplifier gain */
   nRF24L01_Write_Reg(W_REGISTER+RF_SETUP,0x07);
-  /* CRC enable, 16-bit CRC check, power-on */
-  nRF24L01_Write_Reg(W_REGISTER+CONFIG,0x0f);
+  /* CRC enable, 16-bit CRC check, power-on, IRQ reflects when receive data RX_DR */
+  nRF24L01_Write_Reg(W_REGISTER+CONFIG,0x3f);
 
   CE(1);
   /*Follow the chip manual for more than 10us seconds */
