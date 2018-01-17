@@ -702,7 +702,7 @@
             <IarPane-34087>
                 <expressions>
                     <item>data</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

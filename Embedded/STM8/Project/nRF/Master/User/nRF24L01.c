@@ -136,29 +136,6 @@ void nRF24L01_SendData(uint8_t *data)
   delay_ms(5);
 }
 
-void nRF24L01_TX_Clear_IRQ(void)
-{
-  uint8_t sta;
-  /* Read the status register value */
-  sta = nRF24L01_Read_Reg(R_REGISTER+STATUS);
-  /* Determine whether to receive the data */
-  if(sta & 0x40)        
-  {
-    /* Chip standby */
-    CE(0); 
-    /* After receiving the data RX_DR, TX_DS, MAX_PT are set high to 1 by writing
-     * a clear interrupt flag */
-    nRF24L01_Write_Reg(W_REGISTER+STATUS, 0xff);
-    /* Enable working */
-    CSN(0);
-    /* Used to clear the FIFO */
-    nRF24L01_SPI_RW(FLUSH_TX);
-    /* Disable working */
-    CSN(1); 
-    CE(1);
-  }
-}
-
 /*******************************************************************************
  * Name: nRF24L01_RevData
  * Function: Receive data function
@@ -183,7 +160,7 @@ uint8_t nRF24L01_RevData(uint8_t *RevData)
     
     /* After receiving the data RX_DR, TX_DS, MAX_PT are set high to 1 by writing
      * a clear interrupt flag */
-    nRF24L01_Write_Reg(W_REGISTER+STATUS, 0xff);
+    nRF24L01_Write_Reg(W_REGISTER+STATUS, 0xff); 
     /* Enable working */
     CSN(0);
     /* Used to clear the FIFO */

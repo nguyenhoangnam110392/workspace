@@ -11,7 +11,6 @@ void nRF24L01_SendData(uint8_t *data);
 uint8_t nRRF24L01_CheckACK(void);
 void nRF24L01_Set_RxMode(void);
 uint8_t nRF24L01_RevData(uint8_t *RevData);
-void nRF24L01_TX_Clear_IRQ(void);
 
 /* Define SPI pins */
 #define CE_PORT    GPIOC

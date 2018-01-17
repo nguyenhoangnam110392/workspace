@@ -2115,6 +2115,9 @@
     <group>
         <name>User</name>
         <file>
+            <name>$PROJ_DIR$\User\eeprom.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\User\nRF24L01.c</name>
         </file>
         <file>
