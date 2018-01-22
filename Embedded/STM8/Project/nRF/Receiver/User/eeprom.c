@@ -1,17 +1,17 @@
-/**
-  ******************************************************************************
-  * File: eeprom.c                                                             *
-  * Function: Read/write EEPROM. Use for STM8S103                              *
-  * Parameter: None                                                            *
-  * Returns: None                                                              *
-  * Description: None                                                          *
-  ******************************************************************************
-  */
+/*
+ *******************************************************************************
+ * File: eeprom.c                                                              *
+ * Function: Read/write EEPROM. Use for STM8S103                               *
+ * Parameter: None                                                             *
+ * Returns: None                                                               *
+ * Description: None                                                           *
+ *******************************************************************************
+ */
 
 #include "eeprom.h"
 
 /* Data to write into the EEPROM */
-uint8_t data[7] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
+static uint8_t data[9] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
 #define EEPROM_ADDRESS    0x4000
 #define EEPROM_FAILED     0x00
 #define EEPROM_OK         0x01
@@ -25,22 +25,28 @@ uint8_t data[7] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
  ******************************************************************************/
 void EEPROM_Write_Value(void)
 {
+  uint8_t status;
+  status = FLASH->IAPSR & FLASH_FLAG_DUL;
   /* Check if the EEPROM is write-protected. If it is then unlock the EEPROM */
-  if (FLASH_IAPSR_DUL == 0)
+  if (status == 0)
   {
-    FLASH_PUKR_PUK = 0xAE;
-    FLASH_PUKR_PUK = 0x56;
+    FLASH->DUKR = 0xAE;     /* Warning: keys are reversed on data memory !!! */
+    FLASH->DUKR = 0x56;
   }
 
   /* Write the data to the EEPROM. */
-  uint8_t *address = (uint8_t*) EEPROM_ADDRESS;  /*  EEPROM base address */
-  *address++ = 7;                                /*  Store number of data */
-  for (uint8_t index = 0; index < 7; index++)
-  {
-      *address++ = data[index];
-  }
+  uint8_t *address = (uint8_t*) EEPROM_ADDRESS + 7;  /*  EEPROM base address */
+  /*  Store number of data */
+  *address = 0x07;
+  //for (uint8_t index = 0; index < 7; index++)
+  //{
+      *address++ = data[0];
+      *address++ = data[1];
+      *address++ = data[2];
+      *address++ = data[3];
+  //}
   /* Now write protect the EEPROM */
-  FLASH_IAPSR_DUL = 0;
+  FLASH->IAPSR = ~FLASH_IAPSR_DUL;
 }
 
 /*******************************************************************************
@@ -61,7 +67,7 @@ uint8_t VerifyEEPROMData(void)
   }
   else
   {
-    for (int index = 0; index < 7; index++)
+    for (int index = 0; index < 8; index++)
     {
       uint8_t value = *address++;
       if (value != data[index])
