@@ -46,18 +46,18 @@ uint8_t EEPROM_Write_Value(uint8_t *ptr)
   /* Copy pointed data to local array */
   memcpy(eeprom_data, ptr, NUMBER_OF_DATA);
   /* Check if the EEPROM is write-protected. If it is then unlock the EEPROM */
-  if (FLASH->IAPSR & EEPROM_FLAG_DUL == 0)
+  if ((FLASH->IAPSR & EEPROM_FLAG_DUL) == 0)
   {
     FLASH->DUKR = 0xAE;     /* Write unlock key 1 */
     FLASH->DUKR = 0x56;     /* Write unlock key 2 */
   }
 
   /* Define pointer for EEPROM_ADDRESS */
-  uint8_t *address = (uint8_t*) EEPROM_ADDRESS;
+  uint8_t *address = (uint8_t*) EEPROM_ADDRESS_START;
   /* Write data to EEPROM */
   for (uint8_t index = 0; index < NUMBER_OF_DATA; index++)
   {
-    *address++ = data[index];
+    *address++ = eeprom_data[index];
   }
   /* Now write protect the EEPROM */
   FLASH->IAPSR = (uint8_t)(~EEPROM_FLAG_DUL);
@@ -82,7 +82,7 @@ uint8_t VerifyEEPROMData(uint8_t *ptr)
   memcpy(original_data, ptr, NUMBER_OF_DATA);
 
   /* Define pointer for EEPROM_ADDRESS */
-  uint8_t *address = (uint8_t*) EEPROM_ADDRESS;
+  uint8_t *address = (uint8_t*) EEPROM_ADDRESS_START;
   for (int index = 0; index < NUMBER_OF_DATA; index++)
   {
     if (*address++ != original_data[index])

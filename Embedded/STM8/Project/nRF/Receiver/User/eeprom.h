@@ -13,11 +13,12 @@
 **                             Include Section                                **
 *******************************************************************************/
 #include "main.h"
+#include <string.h>
 /*******************************************************************************
 **                           API Declaration Section                          **
 *******************************************************************************/
-uint8_t EEPROM_Write_Value(void);
-uint8_t VerifyEEPROMData(void);
+uint8_t EEPROM_Write_Value(uint8_t *ptr);
+uint8_t VerifyEEPROMData(uint8_t *ptr);
 
 #endif
 /********************************END OF FILE***********************************/

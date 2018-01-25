@@ -3,8 +3,7 @@
 static void CLK_Config(void);
 static void Port_Config(void);
 
-static uint8_t data[32] = {0};
-uint8_t status;
+static uint8_t data[7] = {0x01, 0x02, 0x00, 0x04, 0x05, 0x06, 0x07};
 
 void main(void){
   /* Initialize configuration */
@@ -15,9 +14,8 @@ void main(void){
   //EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOB, EXTI_SENSITIVITY_FALL_ONLY);
   //enableInterrupts();
   //nRF24L01_Set_RxMode();
-  status = 0;
-  EEPROM_Write_Value();
-  status = VerifyEEPROMData();
+  uint8_t *ptr = &data[0];
+  EEPROM_Write_Value(ptr);
   while (1){
     //nRF24L01_RevData(data);
     //halt();
