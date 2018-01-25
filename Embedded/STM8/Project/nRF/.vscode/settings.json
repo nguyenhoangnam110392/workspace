@@ -3,6 +3,6 @@
         "main.h": "c"
     },
     "terminal.integrated.env.windows": {
-        "PATH": "C:\\Users\\Me\\.platformio\\penv\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Users\\Me\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Me\\AppData\\Local\\GitHubDesktop\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Users\\Me\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Me\\AppData\\Local\\GitHubDesktop\\bin"
+        "PATH": "C:\\Users\\Me\\.platformio\\penv\\Scripts;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Users\\Me\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Me\\AppData\\Local\\GitHubDesktop\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\Users\\Me\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Me\\AppData\\Local\\GitHubDesktop\\bin"
     }
 }
