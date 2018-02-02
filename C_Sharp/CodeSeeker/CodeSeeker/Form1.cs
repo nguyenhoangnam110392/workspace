@@ -18,14 +18,14 @@ namespace CodeSeeker
     public partial class Form1 : Form
     {
         List<string> group_file_name = new List<string>();   /* store list of all file */
-        UInt64 count_file = 0;
 
-        Setting setting = new Setting();
+        Setting ST = new Setting();
         FileINFO file_info = new FileINFO();
 
         bool token = true;
         UInt32 sub_folder = 0;
-        String folder_selected_path = null;
+        UInt64 scanned_file = 0;
+        UInt64 collected_file = 0;
 
         /* [1] Init Form first */
         public Form1()
@@ -36,83 +36,35 @@ namespace CodeSeeker
         /* [1] Form Load */
         private void Form1_Load(object sender, EventArgs e)
         {
-            setting._corresponding_line = new List<string>();
-            setting._time_stamp = new List<DateTime>();
+            ST._corresponding_line = new List<string>();
+            ST._time_stamp = new List<DateTime>();
             file_info.name = new List<string>();
-            setting.set_file_info(file_info);
+            ST.set_file_info(file_info);
 
             statusLabel.Text = "No file was loaded.";
             statusSearched.Text = "No file was searched.";
+            DateTime tmp_date_time = DateTime.Now.Date;
+            txt_from_date.Text = tmp_date_time.ToString("MM/dd/yyyy");
+            txt_to_date.Text = tmp_date_time.ToString("MM/dd/yyyy");
         }
 
         /* [2] Load directory event */
         private async void btFolder_Click(object sender, EventArgs e)
         {
             /* Clear all global */
-            setting._corresponding_line.Clear();
             listBox.Items.Clear();
-            count_file = 0;
-            setting.buffer = null;
+            collected_file = 0;
+            ST.buffer = null;
             group_file_name.Clear();
             statusSearched.Text = "No file was searched.";
 
             /* Private */
             FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.SelectedPath = folder_selected_path;
-            if (dialog.ShowDialog() == DialogResult.OK && (setting.chkHeader_checked | setting.chkSource_checked | setting.chkLastest_checked))
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string folder_name = dialog.SelectedPath;
-                folder_selected_path = folder_name; //Save the last selected folder
-                SubDir(folder_name, token);
+                txt_destination.Text = folder_name;
                 btSearch.Enabled = true;
-            }
-            
-        }
-
-        /* [2] Sub dir first */
-        private async void SubDir(string directory, bool token)
-        {
-            if (token==false) { return; }
-            try
-            {
-                foreach (string d in Directory.GetDirectories(directory))
-                {
-                    var ext = new List<string>();  /* List of extension */
-
-                    if (setting.chkSource_checked)
-                    {
-                        ext.Add(".c");
-                        ext.Add(".pm");
-                    }
-
-                    if (setting.chkHeader_checked)
-                    {
-                        ext.Add(".h");                     
-                    }
-
-                    if (setting.chkLastest_checked)
-                    {
-                        ext.Clear();
-                        ext.Add(".c");
-                        ext.Add(".h");
-                        ext.Add(".exe");
-                    }
-
-                    foreach (string f in Directory.GetFiles(d).Where(s => ext.Contains(Path.GetExtension(s))))
-                    {
-                        group_file_name.Add(f); /* Add files name in list */
-                        count_file++;
-                    }
-
-                    sub_folder++;
-                    SubDir(d, token);
-                    statusLabel.Text = count_file + " files was loaded. Sub folder :" + sub_folder;
-                    await Task.Delay(10);
-                }
-            }
-            catch (System.Exception except)
-            {
-                sub_folder--;
             }
         }
 
@@ -135,9 +87,18 @@ namespace CodeSeeker
         /* [2] Listbox Click Event */
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox.SelectedIndex >= 0 && !setting.chkLastest_checked)
+            if (listBox.SelectedIndex >= 0 && !ST.chkLastest_checked)
             {
-                txtContent.Text = setting._corresponding_line.ElementAt(listBox.SelectedIndex);
+                String tmp_str_info = null;
+                String tmp_str_dot = ": ";
+                String tmp_str_file_name = listBox.SelectedItem.ToString();
+                DateTime tmp_dt_modification = File.GetLastWriteTime(tmp_str_file_name);
+
+                tmp_str_info = "File name" + tmp_str_dot.PadLeft(11, ' ');
+                tmp_str_info += Path.GetFileName(tmp_str_file_name) + "\r\n";
+                tmp_str_info += "Modification date" + tmp_str_dot.PadLeft(3, ' ');
+                tmp_str_info += tmp_dt_modification.ToString();
+                txtContent.Text = tmp_str_info;
             }
         }
 
@@ -145,119 +106,164 @@ namespace CodeSeeker
         /* [2] Search Click Event */
         private async void btSearch_Click(object sender, EventArgs e)
         {
-            /* Variable */
-            setting.keyword = txtKeyword.Text;
-            bool flag_compare = false;
-
-            /* Toggle button *//* Already clicked */
-            if (setting.clicked_BTSearch == true){ 
-                setting.clicked_BTSearch = false;
-                setting.enable_load = false;
+            /* Toggle button */
+            if (ST.clicked_BTSearch == true)
+            {
+                ST.clicked_BTSearch = false;
+                ST.enable_load = false;
                 btSearch.Text = "Search";
             }
-            else  /* Not yet */
+            else
             {
-                /* Reset */
-                setting._corresponding_line.Clear();
+                ST._corresponding_line.Clear();
                 listBox.Items.Clear();
-                setting.count_searched = 0;
+                ST.count_searched = 0;
                 listBox.Items.Clear();
-                
 
-                setting.clicked_BTSearch = true;
-                setting.enable_load = true;
+                ST.clicked_BTSearch = true;
+                ST.enable_load = true;
                 btSearch.Text = "Stop";
             }
 
-            
-            if (setting.keyword.Length > 0 && group_file_name.Count > 0)
+            String tmp_dir = txt_destination.Text.ToString();
+
+            DateTime tmp_from_date = Convert.ToDateTime(txt_from_date.Text);
+            DateTime tmp_to_date = Convert.ToDateTime(txt_to_date.Text);
+            UInt64 tmp_int_count_file = 0;
+            String[] tmp_str_ext = new String[100];
+            String str_ext = txt_ext.Text.ToString();
+
+            int ext_index = 0;
+            int index_of_star = 0;
+            int index_of_bookmark = -1;
+
+            while (str_ext.IndexOf("*", index_of_bookmark+1) >= 0)
             {
-                foreach (string file in group_file_name.ToList())
+                index_of_bookmark = index_of_star;
+                index_of_star = txt_ext.Text.IndexOf("*", index_of_bookmark+1);
+                tmp_str_ext[ext_index++] = str_ext.Substring(index_of_bookmark, 3);      
+            }
+
+            await Task.Run(() =>
+            {
+                for (DateTime index_date = tmp_to_date; tmp_from_date <= index_date.Date; index_date = index_date.AddDays(-1))
                 {
-                    setting.line_index = 0;
+                    /* Update status of progress */
+                    update_statusLabel("Scanning on " + index_date.Date.ToString("MM/dd/yyyy."));
 
-                    /* If match keyword is selected */
-                    if (setting.enable_load && !setting.chkLastest_checked)
+                    bool skip_scan = false;
+                    int index_from = 0;
+                    for (int i = 0; i < ext_index; i++)
                     {
-                        await Task.Run(() =>
+                        try
                         {
-                            load_data(file);
-                        });
+                            var todayFiles = Directory.GetFiles(tmp_dir, tmp_str_ext[i], SearchOption.AllDirectories)
+                                 .Where(x => new FileInfo(x).LastWriteTime.Date == index_date);
+                            if (todayFiles.Count() > 0)
+                            {
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    listBox.Items.Add("================== There are " + todayFiles.Count() + " files at "
+                                                + index_date.Date.ToString("MM/dd/yyyy.") + " ===================");
+                                }));
+                            }
+                            else
+                            {
+                                skip_scan = true;
+                            }
 
-                        /* scan for keyword match */
-                        setting.scan_content_file(file, this);
-                    }
-                    else if (setting.enable_load && setting.chkLastest_checked) /* Lastest files is selected */
-                    {
-                        setting.scan_for_time_stamp(file);                                            
-                    }                    
-                }
-                if (setting.enable_load && setting.chkLastest_checked)
-                {
-                    /* add file in list to listbox */
-                    List<DateTime> main_list = setting._time_stamp.OrderBy(x => x.Year).ToList();
+                            if (!skip_scan)
+                            {
+                                foreach (String file_name in todayFiles)
+                                {
+                                    group_file_name.Add(file_name);
+                                }
 
-                    /* Remove older year */
-                    for (int i = main_list.Count - 1; i >= 0; i--)
-                    {
-                        if (main_list[i].Year != DateTime.Now.Year)
-                        {
-                            main_list.RemoveAt(i);
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    update_statusLabel("There are " + tmp_int_count_file++.ToString() + " files.");
+                                }));
+
+                                update_listBox(group_file_name, index_from);
+                                index_from = index_from + group_file_name.Count() - 1;
+                            }/* End of skip scan*/
                         }
-                    }
-
-                    /* Sort by day */
-                    main_list = main_list.OrderBy(x => x.Day).ToList();
-                    int latest_day = main_list[0].Day;
-                    /* Remove older date */
-                    for (int i = main_list.Count - 1; i >= 0; i--)
-                    {
-                        if (main_list[i].Day != latest_day)
+                        catch(Exception exception)
                         {
-                            main_list.RemoveAt(i);
-                        }
-                    }
 
-                    /* Sort by time */
-                    main_list = main_list.OrderBy(x => x.TimeOfDay).ToList();
+                        } 
+                    } /* End of extension loop */
+                }/* End of date time loop */
+            });
 
-                    for (int i = main_list.Count - 1; i >= 0; i--)
-                    {
-                        update_listBox(file_info.name[i] + ". Date " + main_list[i].ToString("HH:mm:ss - dd/MM/yyyy"));
-                        await Task.Delay(10);
-                    }
-                }
-                
-            }      
-        }
+            /* Reset */
+            ST.clicked_BTSearch = false;
+            update_statusLabel("Done.");
+            btSearch.Text = "Search";
 
+        }/* btSearch_Click */
+
+        /*******************************************************************************
+         * Name: load_data
+         * Function: Load data from input file and put into buffer in order to read
+         * Parameter: None
+         * Returns: None
+         * Description: None
+         ******************************************************************************/
         public void load_data(string file_name)
         {
             FileStream fs = new FileStream(file_name, FileMode.Open, FileAccess.Read);
             UInt32 count_line = 0;
 
             /* Read all file into buffer */
-            setting.buffer = File.ReadAllLines(file_name, Encoding.Default);      
+            ST.buffer = File.ReadAllLines(file_name, Encoding.Default);
         }
 
-        /* Update object in graphic main files */
-        public void update_statusSearched()
+        public async void update_statusLabel(String input)
         {
-            statusSearched.Text = setting.count_searched + " files was searched.";
+            statusLabel.Text = input;
+            await Task.Delay(1);
         }
 
-        public void update_listBox(String data)
+
+        /*******************************************************************************
+         * Name: update_statusSearched
+         * Function: Display status detail
+         * Parameter: None
+         * Returns: None
+         * Description: None
+         ******************************************************************************/
+        public void update_statusSearched(String input)
         {
-            listBox.Items.Add(data);
+            statusSearched.Text = input;
         }
 
-        /* [2] Clear Keyword textbox*/
-        private void txtKeyword_DoubleClick(object sender, MouseEventArgs e)
+        /*******************************************************************************
+         * Name: update_listBox
+         * Function: Add item to listbox
+         * Parameter: None
+         * Returns: None
+         * Description: None
+         ******************************************************************************/
+        public async void update_listBox(List<string> data, int index_from)
         {
-            txtKeyword.Text = null;
+            for (int i = index_from; i < data.Count() - 1; i++)
+            {
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+                    listBox.Items.Add(data.ElementAt(i));
+                }));
+                await Task.Delay(1);
+            }      
         }
 
-        /* Start function */
+        /*******************************************************************************
+         * Name: listBox_DoubleClick
+         * Function: Open file when double click on listbox
+         * Parameter: None
+         * Returns: None
+         * Description: None
+         ******************************************************************************/
         private void listBox_DoubleClick(object sender, EventArgs e)
         {
             string list_item = listBox.GetItemText(listBox.SelectedItem);
@@ -267,22 +273,47 @@ namespace CodeSeeker
             Process.Start(path);
         }
 
-        /* Start function */
+        /*******************************************************************************
+         * Name: chkSource_CheckedChanged
+         * Function: Detect checkbox .c ON or OFF
+         * Parameter: None
+         * Returns: None
+         * Description: None
+         ******************************************************************************/
         private void chkSource_CheckedChanged(object sender, EventArgs e)
         {
-            setting.chkSource_checked = (!setting.chkSource_checked) ? true : false;
+            ST.chkSource_checked = (!ST.chkSource_checked) ? true : false;
         }
 
-        /* Start function */
+        /*******************************************************************************
+         * Name: chkHeader_CheckedChanged
+         * Function: Detect checkbox .h ON or OFF
+         * Parameter: None
+         * Returns: None
+         * Description: None
+         ******************************************************************************/
         private void chkHeader_CheckedChanged(object sender, EventArgs e)
         {
-            setting.chkHeader_checked = (!setting.chkHeader_checked) ? true : false;
+            ST.chkHeader_checked = (!ST.chkHeader_checked) ? true : false;
         }
 
-        /* Start function */
-        private void chkLastest_CheckedChanged(object sender, EventArgs e)
+        private void selectFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            setting.chkLastest_checked = (!setting.chkLastest_checked) ? true : false;
-        }       
+            /* Clear all global */
+            listBox.Items.Clear();
+            collected_file = 0;
+            ST.buffer = null;
+            group_file_name.Clear();
+            statusSearched.Text = "No file was searched.";
+
+            /* Private */
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string folder_name = dialog.SelectedPath;
+                txt_destination.Text = folder_name;
+                btSearch.Enabled = true;
+            }
+        }
     }
 }

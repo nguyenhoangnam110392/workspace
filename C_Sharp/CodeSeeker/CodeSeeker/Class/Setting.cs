@@ -14,7 +14,8 @@ namespace Simple.Setting
         public bool chkHeader_checked { get; set; } = false;
         public bool chkLastest_checked { get; set; } = false;
 
-        public List<DateTime> _time_stamp { get; set; } = null;         /* list contains time stamp of files */
+        public bool time_stamp_scan_done { get; set; } = false;
+        public List<DateTime> _time_stamp { get; set; } = null;       /* list contains time stamp of files */
         public List<string> _corresponding_line { get; set; } = null; /* list of line correspond to file */
 
         private UInt16 index = 0;
@@ -25,36 +26,13 @@ namespace Simple.Setting
 
         public string keyword { get; set; } = null;                   /* keyword for matching */
         public string[] buffer { get; set; } = null;                  /* buffer stores the content of file */
+        public int Total_File { get; set; } = 0;                  /* Total number of files in folder and sub-folder */
 
-        private FileINFO file_info;
+        public FileINFO file_info;
 
         public void set_file_info(FileINFO set_fi)
         {
             this.file_info = set_fi;
-        }
-
-        /* Start function */
-        public void scan_content_file(String file, Form1 sender)
-        {
-            count_searched++;
-            sender.update_statusSearched();  /*statusSearched.Text = count_searched + " files was searched.";*/
-
-            foreach (string single_line in buffer)
-            {
-                line_index++;
-                if (single_line.Contains(keyword))
-                {
-                    sender.update_listBox(file + " - Line " + line_index);   /*listBox.Items.Add(file + " - Line " + line_index);*/
-                    _corresponding_line.Add(single_line);
-                }
-            }
-            buffer = null;  /* Clear buffer after using */
-        }/* End function */
-
-        public void scan_for_time_stamp(String file)
-        {
-            _time_stamp.Add(File.GetLastWriteTime(file));
-            file_info.name.Add(file);
         }
     }
 
