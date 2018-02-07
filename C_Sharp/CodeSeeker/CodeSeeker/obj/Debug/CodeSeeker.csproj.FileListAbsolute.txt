@@ -34,3 +34,12 @@ E:\ws\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csprojResolve
 E:\ws\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.Form1.resources
 E:\ws\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.Properties.Resources.resources
 E:\ws\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csproj.GenerateResource.Cache
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\bin\Debug\CodeSeeker.exe.config
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.exe
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.pdb
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\bin\Debug\CodeSeeker.exe
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\bin\Debug\CodeSeeker.pdb
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csprojResolveAssemblyReference.cache
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.Form1.resources
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.Properties.Resources.resources
+E:\workspace\C_Sharp\CodeSeeker\CodeSeeker\obj\Debug\CodeSeeker.csproj.GenerateResource.Cache

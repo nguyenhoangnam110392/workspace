@@ -155,43 +155,38 @@ namespace CodeSeeker
                     int index_from = 0;
                     for (int i = 0; i < ext_index; i++)
                     {
-                        try
+                        foreach (string subDir in Directory.GetDirectories(tmp_dir))
                         {
-                            var todayFiles = Directory.GetFiles(tmp_dir, tmp_str_ext[i], SearchOption.AllDirectories)
-                                 .Where(x => new FileInfo(x).LastWriteTime.Date == index_date);
-                            if (todayFiles.Count() > 0)
+                            foreach (string file in Directory.GetFiles(subDir))
                             {
-                                this.Invoke(new MethodInvoker(delegate ()
-                                {
-                                    listBox.Items.Add("================== There are " + todayFiles.Count() + " files at "
-                                                + index_date.Date.ToString("MM/dd/yyyy.") + " ===================");
-                                }));
+                                var todayFiles = Directory.GetFiles("path_to_directory")
+                                       .Where(x => new FileInfo(x).CreationTime.Date == DateTime.Today.Date);
                             }
-                            else
-                            {
-                                skip_scan = true;
-                            }
-
-                            if (!skip_scan)
-                            {
-                                foreach (String file_name in todayFiles)
-                                {
-                                    group_file_name.Add(file_name);
-                                }
-
-                                this.Invoke(new MethodInvoker(delegate ()
-                                {
-                                    update_statusLabel("There are " + tmp_int_count_file++.ToString() + " files.");
-                                }));
-
-                                update_listBox(group_file_name, index_from);
-                                index_from = index_from + group_file_name.Count() - 1;
-                            }/* End of skip scan*/
                         }
-                        catch(Exception exception)
-                        {
 
-                        } 
+                        var todayFiles = Directory.GetFiles(tmp_dir, tmp_str_ext[i], SearchOption.AllDirectories)
+                                .Where(x => new FileInfo(x).LastWriteTime.Date == index_date);
+                        if (todayFiles.Count() > 0)
+                        {
+                            this.Invoke(new MethodInvoker(delegate ()
+                            {
+                                listBox.Items.Add("================== There are " + todayFiles.Count() + " files at "
+                                            + index_date.Date.ToString("MM/dd/yyyy.") + " ===================");
+                            }));
+                        }
+
+                        foreach (String file_name in todayFiles)
+                        {
+                            group_file_name.Add(file_name);
+                        }
+
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            update_statusLabel("There are " + tmp_int_count_file++.ToString() + " files.");
+                        }));
+
+                        update_listBox(group_file_name, index_from);
+                        index_from = index_from + group_file_name.Count() - 1;
                     } /* End of extension loop */
                 }/* End of date time loop */
             });
