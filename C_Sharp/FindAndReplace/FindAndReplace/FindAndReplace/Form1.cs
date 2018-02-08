@@ -142,5 +142,116 @@ namespace FindAndReplace
                 bt_Run.Enabled = false;
             }
         }
+
+        /***********************************************************************
+         * Name : bt_search_Click
+         * Description : Search for files which are match the keyword
+         **********************************************************************/
+        private void bt_search_Click(object sender, EventArgs e)
+        {
+            file_walker(txt_path.Text.ToString());
+            label_status.Text = "Done.";
+        }
+
+        /***********************************************************************
+         * Name : file_walker
+         * Description : Search file in sub folder
+         **********************************************************************/
+        private async void file_walker(string folder)
+        {
+            await Task.Run(() =>
+            {
+                foreach (string file_path in Directory.GetFiles(folder))
+                {
+                    file_processing(file_path);
+                } /* End of walk through file */
+
+                foreach (string sub_folder in Directory.GetDirectories(folder))
+                {
+                    file_walker(sub_folder);
+                } /* End of walk through folder */
+            }); /* End of task */
+        }
+
+        /***********************************************************************
+         * Name : txt_keyword_TextChanged
+         * Description : Enable/Disable bt_search if text box != null
+         **********************************************************************/
+        private async void file_processing(string file_path)
+        {
+            string str_keyword = txt_keyword.Text.ToString();
+            string file_name = Path.GetFileName(file_path);
+            if (file_name.IndexOf(".doc") > 0)
+            {
+                /* Read input files and replace */
+                try
+                {
+                    Document doc_input = new Document(file_path);
+                    string input = doc_input.ToTxt();
+                    int index_of_match_keyword = 0;
+
+                    index_of_match_keyword = input.IndexOf(str_keyword);
+                    if (index_of_match_keyword > 0)
+                    {
+                        list_match_file.Items.Add(file_name);
+                        group_file_name.Add(file_path);
+                        label_status.Text = "Replaced " + group_file_name.Count + " files";
+                        await Task.Delay(2);
+                    }   
+                }
+                catch (Exception exception){}        
+            } /* End of filter file by extension */
+        }
+
+        /***********************************************************************
+         * Name : txt_path_TextChanged
+         * Description : Enable/Disable bt_search if text box != null
+         **********************************************************************/
+        private void txt_path_TextChanged(object sender, EventArgs e)
+        {
+            if((txt_path.Text.Length > 0) && (txt_keyword.Text.Length > 0))
+            {
+                bt_search.Enabled = true;
+            }
+            else
+            {
+                bt_search.Enabled = false;
+            }
+        }
+
+        /***********************************************************************
+         * Name : txt_keyword_TextChanged
+         * Description : Enable/Disable bt_search if text box != null
+         **********************************************************************/
+        private void txt_keyword_TextChanged(object sender, EventArgs e)
+        {
+            if ((txt_path.Text.Length > 0) && (txt_keyword.Text.Length > 0))
+            {
+                bt_search.Enabled = true;
+            }
+            else
+            {
+                bt_search.Enabled = false;
+            }
+        }
+
+        /***********************************************************************
+         * Name : list_match_file_SelectedIndexChanged
+         * Description : Show information of file
+         **********************************************************************/
+        private void list_match_file_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string info = null;
+            string file_path = group_file_name[list_match_file.SelectedIndex].Replace(@"\", "/");
+            string file_name = Path.GetFileName(file_path);
+            DateTime file_modified_date = File.GetLastWriteTime(file_path);
+
+            info = "Path : " + file_path.Replace("/" + file_name, "") + "\r\n"; ;
+            info += "File name : " + file_name + "\r\n";
+            info += "Modified date: " + file_modified_date.Date.ToString("dd/MM/yyyy");
+
+            txt_info.Text = info;
+
+        }
     }
 }

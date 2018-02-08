@@ -159,8 +159,8 @@ namespace CodeSeeker
                         {
                             foreach (string file in Directory.GetFiles(subDir))
                             {
-                                var todayFiles = Directory.GetFiles("path_to_directory")
-                                       .Where(x => new FileInfo(x).CreationTime.Date == DateTime.Today.Date);
+                                //var todayFiles = Directory.GetFiles("path_to_directory")
+                                //       .Where(x => new FileInfo(x).CreationTime.Date == DateTime.Today.Date);
                             }
                         }
 
