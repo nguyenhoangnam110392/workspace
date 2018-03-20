@@ -65,20 +65,20 @@
                 <option>
                     <name>GenLibInFormatter</name>
                     <version>0</version>
-                    <state>5</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>GenLibInFormatterDescription</name>
-                    <state>No specifier n, no float, no scan set, no assignment suppressing.</state>
+                    <state>Full formatting, without multibytes.</state>
                 </option>
                 <option>
                     <name>GenLibOutFormatter</name>
                     <version>0</version>
-                    <state>5</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>GenLibOutFormatterDescription</name>
-                    <state>No specifier a or A, no specifier n, no float.</state>
+                    <state>Full formatting, without multibytes.</state>
                 </option>
                 <option>
                     <name>GenStackSize</name>
@@ -117,7 +117,7 @@
                 </option>
                 <option>
                     <name>GenMathFunctionDescription</name>
-                    <state></state>
+                    <state>Default variants of cos, sin, tan, log, log10, pow, and exp.</state>
                 </option>
             </data>
         </settings>
@@ -256,8 +256,11 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>D:\STM8\Project\RF_Relay\User</state>
-                    <state>D:\STM8\Project\RF_Relay\Libraries\inc</state>
+                    <state>D:\workspace\Embedded\STM8\Project\DHT11\Src</state>
+                    <state>D:\workspace\Embedded\STM8\Project\DHT11\Inc</state>
+                    <state>D:\workspace\Embedded\STM8\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\inc</state>
+                    <state>D:\workspace\Embedded\STM8\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\src</state>
+                    <state>D:\workspace\Embedded\STM8\lib</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -543,7 +546,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>RF_Relay.out</state>
+                    <state>$PROJ_FNAME$.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -579,7 +582,7 @@
                 </option>
                 <option>
                     <name>IlinkMapFile</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkLogFile</name>
@@ -607,7 +610,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\config\lnkstm8s103f3.icf</state>
+                    <state>lnk0t.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -671,7 +674,7 @@
                 </option>
                 <option>
                     <name>IlinkProgramEntryLabel</name>
-                    <state>__iar_program_start</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>DoFill</name>
@@ -867,7 +870,7 @@
                 <option>
                     <name>GenLibInFormatter</name>
                     <version>0</version>
-                    <state>5</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>GenLibInFormatterDescription</name>
@@ -876,7 +879,7 @@
                 <option>
                     <name>GenLibOutFormatter</name>
                     <version>0</version>
-                    <state>5</state>
+                    <state>2</state>
                 </option>
                 <option>
                     <name>GenLibOutFormatterDescription</name>
@@ -962,7 +965,7 @@
                 <option>
                     <name>IccOptAllowList</name>
                     <version>0</version>
-                    <state>111111</state>
+                    <state>111110</state>
                 </option>
                 <option>
                     <name>IccGenerateDebugInfo</name>
@@ -1380,7 +1383,7 @@
                 </option>
                 <option>
                     <name>IlinkMapFile</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkLogFile</name>
@@ -1605,33 +1608,24 @@
         </settings>
     </configuration>
     <group>
-        <name>Lib</name>
+        <name>Driver</name>
         <file>
-            <name>$PROJ_DIR$\Libraries\src\stm8s_adc1.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Libraries\src\stm8s_clk.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Libraries\src\stm8s_gpio.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Libraries\src\stm8s_tim1.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Libraries\src\stm8s_tim4.c</name>
+            <name>$PROJ_DIR$\..\..\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\src\stm8s_tim2.c</name>
         </file>
     </group>
     <group>
-        <name>User</name>
+        <name>Libs</name>
         <file>
-            <name>$PROJ_DIR$\User\led.c</name>
+            <name>$PROJ_DIR$\Src\delay.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\User\stm8s_it.c</name>
+            <name>$PROJ_DIR$\Src\init.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Src\onewire.c</name>
         </file>
     </group>
     <file>
-        <name>$PROJ_DIR$\User\main.c</name>
+        <name>$PROJ_DIR$\Src\main.c</name>
     </file>
 </project>
