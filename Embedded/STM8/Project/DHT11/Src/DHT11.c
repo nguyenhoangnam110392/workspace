@@ -66,7 +66,7 @@ uint8_t DHT_ReadByte(){
       /* Wait for high bit data */
       return_value = wait_high();
       /* Log the time when hit high signal */
-      time_stamp[0] = htim2.Instance->CNT; 
+      time_stamp[0] = htim2.Instance->CNT;
     }
     
     if(return_value == ONEWIRE_OK){

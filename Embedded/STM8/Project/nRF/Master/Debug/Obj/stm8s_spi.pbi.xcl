@@ -1,4 +1,4 @@
-"E:\workspace\Embedded\STM8\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c"
+"D:\workspace\Embedded\STM8\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c"
 -std=c99
 -ferror-limit=0
 -I
@@ -8,9 +8,9 @@ E:\workspace\Embedded\STM8\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\
 -I
 E:\workspace\Embedded\STM8\Project\nRF\Master\User
 -I
-C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc
+D:\IAR Systems\Embedded Workbench 8.1\stm8\inc
 -I
-C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc\c
+D:\IAR Systems\Embedded Workbench 8.1\stm8\inc\c
 -I
 E:\workspace\Embedded\STM8\STM8S_StdPeriph_Lib\Libraries\STM8S_StdPeriph_Driver\inc
 -I
@@ -261,8 +261,8 @@ E:\workspace\Embedded\STM8\Project\nRF\Master\User
 -D__EDG_SYSV=0
 -D__EDG_ANSIC=1
 -D__EDG_CPP11_IL_EXTENSIONS_SUPPORTED=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h"
--D_DLIB_CONFIG_FILE_STRING="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.0\\stm8\\LIB\\dlstm8smn.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="D:\IAR Systems\Embedded Workbench 8.1\stm8\LIB\dlstm8smn.h"
+-D_DLIB_CONFIG_FILE_STRING="D:\\IAR Systems\\Embedded Workbench 8.1\\stm8\\LIB\\dlstm8smn.h"
 -D__VERSION__="IAR C/C++ Compiler V3.10.1.201 for STM8"
 -D__CODE_MEMORY_LIST1__()=__CODE_MEM_HELPER1__(__code, 0 )
 -D__CODE_MEMORY_LIST2__(_P1)=__CODE_MEM_HELPER2__(__code, 0 ,  _P1 )

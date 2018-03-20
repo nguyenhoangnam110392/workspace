@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\workspace\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.general.xcl" --backend -f "E:\workspace\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.driver.xcl" 
+"D:\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\workspace\Embedded\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.general.xcl" --backend -f "D:\workspace\Embedded\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "E:\workspace\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.general.xcl" "--debug_file=%~1" --backend -f "E:\workspace\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.driver.xcl" 
+"D:\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\workspace\Embedded\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\workspace\Embedded\STM8\Project\nRF24l01\TX\Project\settings\nRF.Debug.driver.xcl" 
 
 @echo off 
 :end

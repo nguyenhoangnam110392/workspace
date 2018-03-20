@@ -22,13 +22,11 @@ void wire_low(){
 }
 
 void wire_input(){
-  GPIO_Init(onewire.GPIOx, onewire.GPIO_Pin, GPIO_MODE_INPUT, 
-                                            GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+  GPIO_Init(onewire.GPIOx, onewire.GPIO_Pin, GPIO_MODE_IN_PU_NO_IT);
 }
 
 void wire_output(){
-  GPIO_Init(onewire.GPIOx, onewire.GPIO_Pin, GPIO_MODE_OUTPUT_PP, 
-                                            GPIO_PULLUP, GPIO_SPEED_FREQ_HIGH);
+  GPIO_Init(onewire.GPIOx, onewire.GPIO_Pin, GPIO_MODE_OUT_PP_HIGH_FAST);
 }
   
 uint8_t wire_read(){

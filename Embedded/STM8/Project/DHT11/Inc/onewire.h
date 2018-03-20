@@ -2,7 +2,7 @@
 #define ONEWIRE_H 
 
 #include "delay.h"
-#include "stm32f1xx_hal_gpio.h"
+#include "stm8s_gpio.h"
 
 /* OneWire commands */
 #define ONEWIRE_CMD_RSCRATCHPAD			0xBE

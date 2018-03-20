@@ -23,9 +23,9 @@ int main(void)
   
   while(1)
   {
-    HAL_Delay(3000);
+    //HAL_Delay(3000);
 
-    DHT_ReadAll(ptr);
+    //DHT_ReadAll(ptr);
     memcpy(data, &ptr[0], 5); 
     humid = (data[1] << 7) | data[0];
     temp = (data[3] << 7) | data[2];

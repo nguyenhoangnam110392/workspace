@@ -2,7 +2,6 @@
 
 /** System Clock Configuration
 */
-TIM_HandleTypeDef htim2;
 
 void SystemClock_Config(void)
 {
