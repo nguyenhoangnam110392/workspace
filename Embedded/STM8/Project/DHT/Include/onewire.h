@@ -1,7 +1,9 @@
 #ifndef ONEWIRE_H
 #define ONEWIRE_H 
 
+#include <string.h>
 #include "stm8s_gpio.h"
+#include "config.h"
 
 /* OneWire commands */
 #define ONEWIRE_CMD_RSCRATCHPAD			0xBE

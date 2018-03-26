@@ -16,13 +16,13 @@ void DHT_ReadAll(uint8_t *pointer) {
   uint8_t return_value = ONEWIRE_OK;
   
   /* Change to output mode */
-  wire_output();        delay_us(10);
+  wire_output();        delay_us(1000);
   
   /* Reset one wire connection : pull high */
-  wire_high();          delay_us(10);
+  wire_high();          delay_us(1000);
   
   /* Send request : pull low > 20ms */
-  wire_low();           delay_us(10);
+  wire_low();           delay_us(1000);
   
   /* End request : pull high again > 20ms */
   wire_high();          //delay_us(5);

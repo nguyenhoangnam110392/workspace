@@ -1,36 +1,25 @@
 #include "onewire.h"
-#include <string.h>
-
-/* Declear variables */
-OneWire_t onewire;
-
-/* -------------------------------------------------------------------------- */
-void OneWire_Init(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin) {
-  /* Save settings */
-  onewire.GPIOx = GPIOx;
-  onewire.GPIO_Pin = GPIO_Pin;
-}
 
 void wire_high(){
-  GPIO_WriteHigh(onewire.GPIOx, onewire.GPIO_Pin);
+  GPIO_WriteHigh(OneWire_PORT, OneWire_PIN);
 }
 
 void wire_low(){
-  GPIO_WriteLow(onewire.GPIOx, onewire.GPIO_Pin);
+  GPIO_WriteLow(OneWire_PORT, OneWire_PIN);
 }
 
 void wire_input(){
-  GPIO_Init(onewire.GPIOx, onewire.GPIO_Pin, GPIO_MODE_IN_PU_NO_IT);
+  GPIO_Init(OneWire_PORT, OneWire_PIN, GPIO_MODE_IN_PU_NO_IT);
 }
 
 void wire_output(){
-  GPIO_Init(onewire.GPIOx, onewire.GPIO_Pin, GPIO_MODE_OUT_PP_HIGH_FAST);
+  GPIO_Init(OneWire_PORT, OneWire_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
 }
   
 uint8_t wire_read(){
   uint8_t return_value = 0;
   
-  if(GPIO_ReadInputPin(onewire.GPIOx, onewire.GPIO_Pin)){
+  if(GPIO_ReadInputPin(OneWire_PORT, OneWire_PIN)){
     return_value = 1;
   }
   else{
