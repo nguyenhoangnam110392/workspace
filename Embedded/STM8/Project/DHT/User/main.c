@@ -2,12 +2,14 @@
 
 static void CLK_Config(void);
 static void TIM2_Config(void);
+static void TM1650_Set(uint8_t address, uint8_t data);
 
 /* Variables */
 uint8_t data[5] = {0x00, 0xFF, 0xFF, 0xFF, 0xFF};
 uint16_t temp = 0;
 uint16_t humid = 0;
 uint16_t sum = 0;
+uint8_t NUMBER[10] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
 
 void main(void){
   /* Initialize configuration */
@@ -16,23 +18,54 @@ void main(void){
   
   //uint8_t *ptr = calloc(5, sizeof(uint8_t));
   
+  I2C_DeInit();
+  CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C,ENABLE);
+  I2C_Cmd(ENABLE);
   I2C_Init(40000, 0x00, I2C_DUTYCYCLE_2, I2C_ACK_CURR, I2C_ADDMODE_7BIT, 16);
-  
+
+  while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
+
   I2C_GenerateSTART(ENABLE);
   while (!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
-  
-  I2C_Send7bitAddress(0x68, I2C_DIRECTION_TX);
+
+  I2C_Send7bitAddress(0x48, I2C_DIRECTION_TX);
   while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-  
-  I2C_SendData(0x25);
-  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING))
-  I2C_SendData(0x71);
+
+  I2C_SendData(0x11);
   while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING))
   
-  I2C_SendData(0x34);
-  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING))
-  I2C_SendData(0x7F);
-  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING))
+  //
+  I2C_SendData(0x68);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  I2C_SendData(0x3f);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  //
+  I2C_SendData(0x6A);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  I2C_SendData(0x06);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  //
+  I2C_SendData(0x6C);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  I2C_SendData(0x5b);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  //
+  I2C_SendData(0x6E);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  I2C_SendData(0x4f);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  //TM1650_Set(0x68, 0x66);  /* Digit 1 */
+  //TM1650_Set(0x6A, 0x6d);  /* Digit 2 */
+  //TM1650_Set(0x6C, 0x6d);  /* Digit 3 */
+  //TM1650_Set(0x6E, 0x7f);  /* Digit 4 */
+  
   I2C_GenerateSTOP(ENABLE);
   
   while (1){
@@ -66,6 +99,15 @@ static void TIM2_Config(void)
   
   /* TIM2 enable counter */
   TIM2_Cmd(ENABLE);
+}
+
+static void TM1650_Set(uint8_t address, uint8_t data)
+{
+  I2C_SendData(address);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
+  
+  I2C_SendData(data);
+  while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));
 }
 
 #ifdef USE_FULL_ASSERT
