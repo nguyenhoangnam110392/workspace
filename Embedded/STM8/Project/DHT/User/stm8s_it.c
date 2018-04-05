@@ -38,6 +38,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+extern uint16_t counter;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
@@ -148,6 +149,7 @@ INTERRUPT_HANDLER(EXTI_PORTC_IRQHandler, 5)
   */
 INTERRUPT_HANDLER(EXTI_PORTD_IRQHandler, 6)
 {
+  counter++;
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
