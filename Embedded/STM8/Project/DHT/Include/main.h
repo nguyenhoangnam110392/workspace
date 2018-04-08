@@ -56,11 +56,22 @@
 #define READ_WRITE_BIT 0x02  // Read/Write bit
 #define LCD_SELECT_BIT 0x01 // Register select bit
 
-#define READY 0x00
-#define NOT_READY 0x01
+
 
 void delay_us(uint16_t x);
 void delay_ms(uint16_t x);
+void LCD_send_command(uint8_t data);
+void LCD_print_config_mode(uint8_t index);
+void LCD_print_notification(void);
+void LCD_setCursor(uint8_t col, uint8_t row);
+void LCD_Config(void);
+void LCD_backlight_mode(uint8_t state);
+void LCD_display_mode(uint8_t state);
+void LCD_print_data(uint8_t humid_data, uint8_t temp_data, uint8_t temp_timer);
+void LCD_Write_Bit(uint8_t data);
+void LCD_Write_Enable_Bit(uint8_t data);
+void LCD_Write4Bit(uint8_t data);
+void LCD_send_char(uint8_t data);
 
 #endif
 

@@ -1,7 +1,6 @@
 #include "onewire.h"
 #include "DHT11.h"
 #include <string.h>
-#include "stm8s_tim2.h"
 
 /* Local function */
 uint8_t DHT_ReadByte();

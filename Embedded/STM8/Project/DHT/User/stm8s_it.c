@@ -29,6 +29,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_it.h"
+#include "config.h"
+#include "main.h"
 
 /** @addtogroup Template_Project
   * @{
@@ -39,6 +41,18 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 extern uint16_t counter;
+extern uint8_t mode;
+extern uint8_t enter_setting;
+extern uint8_t displayfunction;
+extern uint8_t displaycontrol;
+extern uint8_t displaymode;
+extern uint8_t set_temp;
+extern uint8_t set_humid;
+extern uint16_t set_timer;
+extern uint16_t timer;
+extern uint8_t mode_index;
+uint8_t interrupt_counter = 0;
+uint8_t second = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
@@ -137,6 +151,22 @@ INTERRUPT_HANDLER(EXTI_PORTB_IRQHandler, 4)
   */
 INTERRUPT_HANDLER(EXTI_PORTC_IRQHandler, 5)
 {
+  GPIO_Init(GPIOC, GPIO_PIN_7, GPIO_MODE_IN_PU_NO_IT);
+  
+  if(mode == CONFIG_MODE)
+  {
+    mode_index++;
+    LCD_print_config_mode(mode_index);
+    enter_setting = ENTER_SETTING;
+  } 
+  else if(mode == OPERATING_MODE)
+  {
+    mode_index++;
+    LCD_print_config_mode(mode_index);
+    mode = CONFIG_MODE;
+  }
+  delay_ms(500);
+  GPIO_Init(GPIOC, GPIO_PIN_7, GPIO_MODE_IN_PU_IT);
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
@@ -149,10 +179,82 @@ INTERRUPT_HANDLER(EXTI_PORTC_IRQHandler, 5)
   */
 INTERRUPT_HANDLER(EXTI_PORTD_IRQHandler, 6)
 {
-  counter++;
-  /* In order to detect unexpected events during development,
-     it is recommended to set a breakpoint on the following instruction.
-  */
+  uint8_t tmp_input = GPIOD->IDR;
+  GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_IN_PU_NO_IT);
+  tmp_input &= (uint8_t)GPIO_PIN_2;
+  
+  if(mode_index == 1)
+  {
+    if(tmp_input)
+    {
+      set_temp++;
+    }
+    else
+    {
+      set_temp--;
+    }
+    
+    if(set_temp <= 0){ set_temp = 0;}
+    
+    uint8_t hex[2];
+    hex[0] = set_temp / 10 + 48;
+    hex[1] = set_temp % 10 + 48;
+    LCD_setCursor(0, 7);
+    LCD_send_char(hex[0]);
+    LCD_send_char(hex[1]);
+    LCD_setCursor(0, 7);
+  }
+  else if(mode_index == 2)
+  {
+    if(tmp_input)
+    {
+      set_humid++;
+    }
+    else
+    {
+      set_humid--;
+    }
+    
+    if(set_humid <= 0){ set_humid = 0;}
+    
+    uint8_t hex[2];
+    hex[0] = set_humid / 10 + 48;
+    hex[1] = set_humid % 10 + 48;
+    LCD_setCursor(1, 8);
+    LCD_send_char(hex[0]);
+    LCD_send_char(hex[1]);
+    LCD_setCursor(0, 7);
+  }
+  else if(mode_index == 3)
+  {
+    if(tmp_input)
+    {
+      set_timer++;
+    }
+    else
+    {
+      set_timer--;
+    }
+    
+    if(set_timer <= 0) 
+    {
+      set_timer = 0;
+    }
+    else if(set_timer > 60000)
+    {
+      set_timer = 0;
+    }
+    
+    uint8_t hex[2];
+    hex[0] = set_timer / 10 + 48;
+    hex[1] = set_timer % 10 + 48;
+    LCD_setCursor(0, 8);
+    LCD_send_char(hex[0]);
+    LCD_send_char(hex[1]);
+    LCD_setCursor(0, 8);
+  }
+  delay_ms(10);
+  GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_IN_PU_IT);
 }
 
 /**
@@ -226,6 +328,14 @@ INTERRUPT_HANDLER(SPI_IRQHandler, 10)
   */
 INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
 {
+   second++;
+   
+   if(second >= 60)
+   {
+     timer--;
+     second = 0;
+   }
+   TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
